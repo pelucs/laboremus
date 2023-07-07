@@ -1,0 +1,28 @@
+query GetProducts {
+  products (stage: PUBLISHED, last: 100){
+    name
+    slug
+    line
+    id
+    ncm
+    category
+    categoryEn
+    categoryEs
+    description
+    descriptionEn
+    descriptionEs
+    videoId
+    sticker{
+      url
+    }
+    manual{
+      url
+    }
+    image {
+      url
+    }
+    folder{
+      url
+    }
+  }
+}

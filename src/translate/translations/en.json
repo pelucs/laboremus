@@ -1,0 +1,170 @@
+{
+  "translation": {
+    "busque-aqui": "Search here",
+    "pesquisar": "Search",
+    "idioma": "Language",
+
+    "inicio": "Home",
+    "sobre": "About the company",
+    "seja-revendedor": "Be a reseller",
+    "condicoes-especiais": "Special conditions",
+    "linha-agricola": "Agricultural line",
+    "linha-ecologica": "Ecological line",
+    "desc-agricola": "Forage machines, forage harvesters, scales...",
+    "desc-ecologica": "Coconut crushers, composting...",
+
+    "short-desc-tro": "Equipment aimed at the naval area, developed to dispose of organic waste at sea.",
+    "desc-tro": "TRO Offshore is a piece of equipment aimed at the naval area, offshore and onshore, on oil platforms, ships, dredgers positioned in the external area, to dispose of organic waste generated in the kitchen and in the cafeteria at sea. According to the MARPOPL standard, which requires particles with a maximum of 25mm x 25mm.",
+    "producao-tro": "In its 4000n version it produces up to 4000kg/h and its 6000n version up to 6000kg/h. Both versions produce general organic waste.",
+    "estrutura-tro": "Structure entirely in reinforced steel sheets with surface treatment in degreasing and phosphating baths, prime and PU paints to resist the marine environment and bad weather.",
+    "potencia-tro": "In its 4000n version it has a 7.5hp to 10hp engine with a working speed of 2600rpm and its 6000n version has a 15hp to 20hp engine with a working speed of 2600rpm.",
+
+    "short-desc-brava": "Compact and versatile equipment designed to grind and chop dry and green products.",
+    "desc-brava": "Brava is a compact and versatile equipment designed to grind and chop dry and green products. It has great performance through its system of sieves with holes of 1.60mm, 3.18mm, .35mm and 12.7mm. The Brava model has a version with fixed hammers, suitable for green products, and a version with oscillating hammers, suitable for dry products.",
+    "producao-brava": "Brava produces grasses, stems and tubers up to 820 kg/h, stalks with mesh up to 200 kg/h, corn (on the cob) up to 120 kg/h.",
+    "estrutura-brava": "Structure entirely in reinforced steel sheets with curved lid (smooth bottom), ergonomics for greater safety.",
+    "potencia-brava": "It has an electric motor with a power of 2hp, voltage of 110/220hp with a working speed of 3500rpm.",
+
+    "short-desc-tcg": "Robust and versatile equipment that was developed to crush residues derived from coconut trees.",
+    "desc-tcg": "The TCG15eco is a robust and versatile piece of equipment that was developed to crush residues derived from coconut trees, such as green coconut, dry coconut, straw and stalk. Indicated for coconut water bottlers, coconut planters, dry coconut producers, condominiums, waste treatment centers and city halls.",
+    "producao-tcg": "The TCG15eco produces green coconut up to 3000kg/h, dry coconut up to 1000kg/h and branches with 4m³.",
+    "estrutura-tcg": "Structure entirely in reinforced steel plates with surface treatment in degreasing, phosphating and epoxy powder baths. Self-aligning bearings in outer and split bearings for easy maintenance.",
+    "potencia-tcg": "It has a 15hp engine, working speed at 2600rpm with a 100B3 pulley.",
+
+    "botao-conhecer": "Know more",
+
+    "producao": "Production",
+    "estrutura": "Structure",
+    "potencia": "Potency",
+
+    "lancamento": "Laboremus Release",
+    "lancamento-title": "New forage shredder. BRAVA 2 needs no comments!",
+    "lancamento-desc": "All bravery in a compact, robust and durable equipment. Ideal for those who want to leverage their rural production. And now in versions with mobile or fixed hammers.",
+    "card-1-title": "Robustness",
+    "card-1-desc": "Structure in reinforced steel sheets with curved cover.",
+    "card-2-title": "Production",
+    "card-2-desc": "Grass, stems and tubers up to 1200kg/h, stake with screen up to 200kg/h, corn (on the cob) up to 120kg/h.",
+
+    "title-cards": "Why choose Laboremus?",
+    "pioneirismo": "Pioneering",
+    "inovacao": "Innovation",
+    "qualidade": "Quality",
+    "pioneirismo-short-desc": "It began manufacturing sisal shredders, and then developed the world's first palm slicers.",
+    "inovacao-short-desc": "In the 60s, he perfected the slicers, and transformed them into combined machines, thus having the possibility of foraging grass, crushers and grains.",
+    "qualidade-short-desc": "The strongest brand, delivering robustness, durability and innovation for the agricultural and ecological market",
+
+    "mais-vendidas": "Best selling machines",
+
+    "confira-os-produtos": "Check all our products",
+    "produto-card-agri": "Palm, grass and other green fodder",
+    "produto-card-eco": "Compost, fabrics and other organic waste",
+
+    "empresas-lideres": "Leading companies that own Laboremus machines",
+
+    "feedback-title": "We generate results from the good relationship with the client",
+    "revenda": "Dealer",
+    "comentario-revenda-1": "Laboremus is synonymous with price, deadlines and quality.",
+    "comentario-revenda-2": "It's been years of partnership, and I'm very pleased to be one of the biggest resellers in my region, and in other states.",
+    "comentario-revenda-3": "Rural producers seek quality and durability, which is why they choose Laboremus.",
+    "comentario-revenda-4": "We sell inside and outside the state, an excellent brand.",
+
+    "visitar-youtube": "Visit our youtube channel",
+    "botao-visitar": "Access channel",
+
+    "historia": "History",
+    "sobre-revendas": "About resales",
+    "produtos": "Products",
+    "contato": "Contact",
+    "localizacao": "Location",
+    "redes-sociais": "Social media",
+    "copy": "©️2023 - LABOREMUS - Industry and Trade of Agricultural Machines. All rights reserved.",
+    "dev": "Developed by",
+
+    "laboremus-industria": "LABOREMUS - INDUSTRY LTDA.",
+    "desc": "In the 1920s, in the Brazilian city of Campina Grande, a businessman named José Luiz de Sousa started his business in the region with a mechanical office giving assistance to the cane mills in the region.",
+    "missao-title": "Mission",
+    "pioneirismo-title": "Pioneering",
+    "responsabilidade-title": "Responsibility",
+    "missao-desc": "Transcend generations with innovative and reliable products that contribute to the sustainability and productivity of our land.",
+    "pioneirismo-desc": "It began manufacturing sisal shredders, and then developed the world's first palm slicers.",
+    "responsabilidade-desc": "Laboremus is a serious company that cares both about the quality of its products and the quality of life of its employees. We are proud to have an experienced team engaged with technology and functionality. Today, the result of this work is seen in the various machines such as forage shredders, pallet trucks, scales and shredders for hay and sugar cane.",
+
+    "tradicao-title": "Tradition and commitment",
+    "tradicao-desc": "Laboremus is part of the history of Brazilian agribusiness. Since 1924, it has been committed to listening to ideas and opinions, always seeking to serve the most demanding rural producers, as it is through them that food becomes life.",
+
+    "1924-1940-title": "Foundation and first projects",
+    "1924-1940-desc-1": "With skill, knowledge and vision ahead of his time, José Luiz starts to manufacture a sisal defribilator and, soon after, one of the first foragers for grass.",
+    "1924-1940-desc-2": "Laboremus, which now transcends generations, and is increasingly gaining ground in the agricultural machinery trade, optimizes the machine manufacturing process, ceasing to be a 'workshop' and gaining industry status. For decades, it has remained firm and strong in the manufacture, maintenance and sale of this equipment, with a factory/workshop/shop at Rua João Suassuna that runs around the block and ends at Rua João Pessoa in the center of Campina.",
+
+    "1950-1960-title": "Pioneering in the handling of cactus pear and grass",
+    "1950-1960-desc-1": "In the 50's he invented the world's first palm slicing machine. Out of necessity.",
+    "1950-1960-desc-2": "In the 60's, he invented the combined machine for cutting palm and grass and started to manufacture equipment in today's molds (second generation), with seven models available on the market.",
+
+    "1980-1990-title": "Partnerships and innovation",
+    "1980-1990-desc-1": "In the 1980s, a close partnership with universities and research bodies encouraged innovation as a strategic differential (third generation).",
+    "1980-1990-desc-2": "Develops several products for sheep and goat farming that has been gaining strength and without specific machinery. It created machines for palm and grass with smaller and more precise dimensions, scales, balers and hay shredders and its own model of forage harvester with the differential of grain crushing (grain kit).",
+
+    "2000-2010-title": "Environmental responsibility",
+    "2000-2010-desc-1": "It launches the ECO line with products aimed at the environment, such as organic waste shredders, coconut and branch shredders, foam and fabric shredders, diversifying its area of activity.",
+    "2000-2010-desc-2": "The fourth generation enters the scene with a more commercial vision and more focused on human resources.",
+
+    "2020-hoje-title": "Fulfilling our saying of transcending generations with innovative and high quality products",
+    "2020-hoje-desc-1": "Our mix already has 22 products and expands its area of operation to the North and Southeast regions. He accepts the challenge of developing a palm harvester to start the mechanization of this crop and encourage the development of the Brazilian semi-arid region.",
+    "2020-hoje-desc-2": "Scheduled launch of the world's first palm harvester during Agrishow. The internationalization of Laboremus begins with actions to export its products to Latin America, Central America and Africa.",
+
+    "button-slide": "2020 - Today",
+
+    "entre-em-contato": "Contact",
+    "fabrica-duvidas": "Factory and doubts",
+    "vendas-internas": "Inside sales",
+    "vendas-externas": "Outside sales",
+    "demais-regioes": "Other regions",
+    "seja-distribuidor": "Be our distributor",
+    "form-desc": "If you are not interested in making a call, you have the option to contact us via Whatsapp",
+    "pf": "Physical person",
+    "pj": "Legal person",
+    "nome": "Name",
+    "sobrenome": "Surname",
+    "telefone": "Phone",
+    "estado": "State",
+    "cidade": "City",
+    "endereco": "Address",
+    "mensagem": "Message",
+    "placeholder": "Inform",
+    "botao-enviar": "Send message",
+
+    "condicoes-especiais-desc": "There are no special conditions at the moment. Come back soon!👍",
+
+    "destaque": "Emphasis",
+
+    "visao-geral": "Overview",
+    "producoes": "Productions",
+    "valores": "Values may change according to how the machine is powered",
+    "especificacoes-tec": "Technical specifications",
+    "especificacoes": "Specifications",
+    "pecas-de-repo": "Spare parts",
+    "baixar-manual": "Download manual",
+    "baixar-folheto": "Download leaflet",
+    "material": "Material",
+    "mais-imagens": "More images",
+    "video-maquina": "Watch the machine working",
+    "mesma-categoria": "Same category product",
+    "sujeitas-a-mudanca": "All specifications are subject to change without notice. In case of doubts. please confirm with the commercial department",
+    "dados-tec": "Technical Data",
+
+    "filtrar": "Filter",
+    "filtros": "Filters",
+    "limpar": "Clean",
+
+    "fale-conosco": "Contact us",
+
+    "dimensoes": "Dimensions",
+    "producao-avohay": "Production between 50 to 100 tons/h",
+    "peso-avohay": "Total machine weight 1800kg",
+    "sistema-avohay": "Hydraulic system and cardan",
+    "acionamento-avohay": "Tractor PTO drive",
+
+    "primeira-cp": "World's first palm harvester",
+    "desc-cp": "Machine developed to revolutionize agribusiness through the mechanization of the cultivation of palm, forage that is part of the food base of the herds, having great nutritional value, resistant to long droughts, avoiding frustrations in the livestock activity in periods of drought."
+  }
+}

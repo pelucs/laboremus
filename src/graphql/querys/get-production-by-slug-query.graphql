@@ -1,0 +1,11 @@
+query GetProductionBySlug ($slug: String) {
+  production (where: {slug: $slug}) {
+    slug
+    material
+    materialEn
+    materialEs
+    production
+    productionEn
+    productionEs
+  }
+}

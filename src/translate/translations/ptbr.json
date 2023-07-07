@@ -1,0 +1,165 @@
+{
+  "translation": {
+    "busque-aqui": "Busque aqui",
+    "pesquisar": "Pesquisar",
+    "idioma": "Idioma",
+
+    "inicio": "Início",
+    "sobre": "Sobre a empresa",
+    "seja-revendedor": "Seja revendedor",
+    "condicoes-especiais": "Condições especiais",
+    "linha-agricola": "Linha agrícola",
+    "linha-ecologica": "Linha ecológica",
+    "desc-agricola": "Máquinas forrageiras, ensiladeiras, balanças...",
+    "desc-ecologica": "Trituradores de coco, compostagem...",
+
+    "short-desc-tro": "Equipamento voltado para área naval, desenvolvido para descartar os resíduos orgânicos ao mar.",
+    "desc-tro": "O TRO Offshore é um equipamento voltado para área naval, offshore e onshore, em plataformas de petróleo, navios, dragas posicionadas na área externa, para descartar os resíduos orgânicos gerados na cozinha e no refetório ao mar. De acordo com a norma MARPOPL, no qual é necessário partículas com no máximo 25mm x 25mm",
+    "producao-tro": "Em sua versão 4000n produz até 4000kg/h e sua versão 6000n até 6000kg/h. Ambas as versões produz resíduos orgânicos em geral.",
+    "estrutura-tro": "Estrutura toda em chapas de aço reforçado com tratamento superficial em banhos desengraxantes e fosfatizantes, prime e tintas PU para resistir ao ambiente marinho e intempéries.",
+    "potencia-tro": "Em sua versão 4000n possui um motor de 7,5cv a 10cv com rotação de trabalho a 2600rpm e sua versão 6000n possui um motor de 15cv a 20cv com rotação de trabalho a 2600rpm.",
+
+    "short-desc-brava": "Equipamento compacto e versátil desenvolvido para moer e picar produtos secos e verdes.",
+    "desc-brava": "A Brava é um equipamento compacto e versátil desenvolvido para moer e picar produtos secos e verdes. Possui grande desempenho através do seu sistema de peneiras com furos de 1.60mm, 3.18mm, .35mm e 12.7mm. O modelo Brava possui a versão de martelos fixos, indicado para produtos produtos verdes e a versão com martelos oscilantes que se adequa a produtos secos.",
+    "producao-brava": "A Brava produz capins, caules e tubérculos até 820kg/h, maniva com tela até 200kg/h, milho (espiga) até 120kg/h.",
+    "estrutura-brava": "Estrutura toda em chapas de aço reforçado com tampa curva (fundo liso), ergonomia para uma maior segurança.",
+    "potencia-brava": "Possui motor elétrico com potência de 2cv, tensão de 110/220cv com rotação de trabalho a 3500rpm.",
+
+    "short-desc-tcg": "Equipamento robusto e versátil que foi desenvolvido para triturar os resíduos derivados dos coqueiros.",
+    "desc-tcg": "O TCG15eco é um equipamento robusto e versátil que foi desenvolvido para triturar os resíduos derivados dos coqueiros, como o coco verde, coco seco, a palha e o pendúculo. Indicadas para envasadores de água de coco, plantadores de coco, produtores de coco seco, condomínios, centros de tratamento de resíduos e prefeituras.",
+    "producao-tcg": "O TCG15eco produz o coco verde até 3000kg/h, coco seco até 1000kg/h e galhos com 4m³.",
+    "estrutura-tcg": "Estrutura toda em chapas de aço reforçado com tratamento superficial em banhos desengraxantes, fosfatizantes e epoxi em pó. Rolmentos  auto compensadores em mancais externos e bipartidos para facilitar a manutenção.",
+    "potencia-tcg": "Possui motor com 15cv, rotação de trabalho a 2600rpm com polia 100B3.",
+
+    "botao-conhecer": "Conheça",
+
+    "producao": "Produção",
+    "estrutura": "Estrutura",
+    "potencia": "Potência",
+
+    "lancamento": "Lançamento Laboremus",
+    "lancamento-title": "Novo triturador forrageiro. A BRAVA 2 dispensa todos os comentários!",
+    "lancamento-desc": "Toda bravura em um equipamento compacto, robusto e durável. Ideal para quem quer alavancar a sua produção rural. E agora em suas versões com martelos móveis ou fixos.",
+    "card-1-title": "Robustez",
+    "card-1-desc": "Estrutura em chapas de aço reforçados com tampa curva.",
+    "card-2-title": "Produção",
+    "card-2-desc": "Capins, caules e tubérculos até 1200kg/h, maniva com tela até 430kg/h, milho (espiga) até 350kg/h.",
+
+    "title-cards": "Porque escolher a Laboremus?",
+    "pioneirismo": "Pioneirismo",
+    "inovacao": "Inovação",
+    "qualidade": "Qualidade",
+    "pioneirismo-short-desc": "Iniciou-se na fabricação de desfibradores de sisal, e em seguinda desenvolveu os primeiros fatiadores de palma do mundo",
+    "inovacao-short-desc": "Já nos anos 60, aperfeiçoou os fatiadores, e transformou em máquinas conjugadas, tendo assim a possibilidade de forrageira de capins, trituradores e grãos",
+    "qualidade-short-desc": "A marca mais forte, entregando robustez, durabilidade e inovação para o mercado agropecuário e ecológico",
+
+    "mais-vendidas": "Máquinas mais vendidas",
+
+    "confira-os-produtos": "Confira todos os nossos produtos",
+    "produto-card-agri": "Palma, capim e demais forragens verdes",
+    "produto-card-eco": "Compostagem, tecidos e demais resíduos orgânicos",
+
+    "empresas-lideres": "Empresas líderes que possuem máquinas Laboremus",
+
+    "feedback-title": "Geramos resultado a partir do bom relacionamento com o cliente",
+    "revenda": "Revendedor",
+    "comentario-revenda-1": "A Laboremus é sinônimo de preço, prazo e qualidade.",
+    "comentario-revenda-2": "São anos de parceria, e eu sou muito satisfeito, por ser um dos maiores revendedores da minha região, e de outros estados.",
+    "comentario-revenda-3": "O produtor rural busca qualidade e durabilidade, por isso escolhem a Laboremus.",
+    "comentario-revenda-4": "Vendemos dentro e fora do estado, uma excelente marca.",
+
+    "visitar-youtube": "Acesse nosso canal no youtube",
+    "botao-visitar": "Acessar canal",
+
+    "historia": "História",
+    "sobre-revendas": "Sobre revendas",
+    "produtos": "Produtos",
+    "contato": "Contato",
+    "localizacao": "Localização",
+    "redes-sociais": "Redes sociais",
+    "copy": "©️2023 - LABOREMUS - Indústria e Comércio de Máquinas Agrícolas LTDA. Todos os direitos reservados.",
+    "dev": "Desenvolvido por",
+
+    "laboremus-industria": "LABOREMUS - INDÚSTRIA LTDA.",
+    "desc": "Na década de 1920, na cidade brasileira de Campina Grande, um empresário chamado José Luiz de Sousa inicia seu empreendimento na região com uma oficina mecânica dando assistência aos engenhos de cana na região.",
+    "missao-title": "Missão",
+    "pioneirismo-title": "Pioneirismo",
+    "responsabilidade-title": "Reponsabilidade",
+    "missao-desc": "Transcender gerações com produtos inovadores e confiáveis que contribuam para a sustentabilidade e produtividade da nossa terra.",
+    "pioneirismo-desc": "Iniciou-se na fabricação de desfibradores de sisal, e em seguinda desenvolveu os primeiros fatiadores de palma do mundo.",
+    "responsabilidade-desc": "A Laboremus é uma empresa séria, que se preocupa tanto com a qualidade de seus produtos quanto com a qualidade de vida de seus colaboradores. Temos orgulho de ter uma equipe experiente e engajada com tecnologia e funcionalidade. Hoje, o resultado desse trabalho é visto nas diversas máquinas como as desfibradoras de forragem, paleteiras, balanças e trituradoras para feno e cana-de-açúcar.",
+
+    "tradicao-title": "Tradição e compometimento",
+    "tradicao-desc": "A Laboremus faz parte da história do agronegócio brasileiro. Desde 1924 tem o compromisso em ouvir ideias e opniões, sempre buscando atender os mais exigentes produtores rurais, pois é através deles que o alimento se transforma em vida.",
+
+    "1924-1940-title": "Fundação e primeiros projetos",
+    "1924-1940-desc-1": "Com habilidade, conhecimento e visão à frente de seu tempo, José Luiz começa a fabricar um desfribilador de sisal e, logo em seguida, uma das primeiras forrageiras para capim.",
+    "1924-1940-desc-2": "A Laboremus, que agora transcende geração, e cada vez mais ganha espaço no comercio de máquinas agrícolas, otimiza o processo de fabricação das maquinas, deixando de ser uma ‘oficina’ e ganhando status de indústria. Por décadas manteve-se firme e forte na fabricação, manutenção e comercialização destes equipamentos, com uma fábrica/oficina/loja à Rua João Suassuna que vara o quarteirão e desemboca na Rua João Pessoa no centro de Campina.",
+
+    "1950-1960-title": "Pioneirismo no manuseio da palma forrageira e capim",
+    "1950-1960-desc-1": "Na década de 50 inventou a primeira máquina fatiadora de palma do mundo. A partir da necessidade.",
+    "1950-1960-desc-2": "Na década de 60 inventou a máquina conjugada para corte da palma e capim e inicia a fabricação de equipamentos nos moldes de hoje (segunda geração), contando com sete modelos a disposição do mercado.",
+
+    "1980-1990-title": "Parcerias e inovação",
+    "1980-1990-desc-1": "Na década de 80 estreita parceria com universidades e órgãos de pesquisa e incentiva a inovação como diferencial estratégico (terceira geração).",
+    "1980-1990-desc-2": "Desenvolve vários produtos para caprino ovinocultura que vem ganhando força e sem maquinário especifico. Criou as máquinas para palma e capim com menores e mais precisos, balança, enfardadeira e trituradores de feno e modelo próprio de ensiladeira com o diferencial de triturar grãos (kit grãos).",
+
+    "2000-2010-title": "Responsabilidade ambiental",
+    "2000-2010-desc-1": "Lança a linha ECO com produtos voltados ao meio ambiente como os trituradores de resíduos orgânicos, trituradores de coco e galhos, trituradores de espuma e tecido, diversificando sua área de atuação.",
+    "2000-2010-desc-2": "Entra em cena a quarta geração com uma visão mais comercial e mais focada em recursos humanos.",
+
+    "2020-hoje-title": "Cumprindo-se o nosso ditado de transceder gerações com produtos inovadores e de ótima qualidade",
+    "2020-hoje-desc-1": "Nosso mix já conta com 22 produtos e amplia sua área de atuação para região norte e sudeste. Aceita o desafio de desenvolver uma colheitadeira de palma para iniciar a mecanização desta cultura e incentivar o desenvolvimento do semi árido brasileiro.",
+    "2020-hoje-desc-2": "Lançamento previsto da primeira colheitadeira de palma do mundo durante a Agrishow. Inicia a internacionalização da Laboremus com ações para exportação de seus produtos para américa latina, américa central e África.",
+
+    "button-slide": "2020 - Hoje",
+
+    "entre-em-contato": "Entre em contato",
+    "fabrica-duvidas": "Fábrica e dúvidas",
+    "vendas-internas": "Vendas internas",
+    "vendas-externas": "Vendas externas",
+    "demais-regioes": "Demais regiões",
+    "seja-distribuidor": "Seja nosso distribuidor",
+    "form-desc": "Caso não tenha interesse em fazer ligação, você possui a opção de falar conosco via Whatsapp",
+    "pf": "Pessoa física",
+    "pj": "Pessoa jurídica",
+    "nome": "Nome",
+    "sobrenome": "Sobrenome",
+    "email": "Email",
+    "telefone": "Telefone",
+    "estado": "Estado",
+    "cidade": "Cidade",
+    "endereco": "Endereço",
+    "mensagem": "Mensagem",
+    "placeholder": "Informe",
+    "botao-enviar": "Enviar mensagem",
+
+    "condicoes-especiais-desc": "Não existe nenhuma condição especial no momento. Volte em breve!👍",
+
+    "destaque": "Destaque",
+
+    "visao-geral": "Visão geral",
+    "producoes": "Produções",
+    "valores": "Os valores podem mudar de acordo com a forma em que a máquina é alimentada",
+    "especificacoes-tec": "Especificações técnicas",
+    "especificacoes": "Especificações",
+    "pecas-de-repo": "Peças de reposição",
+    "baixar-manual": "Baixar manual",
+    "baixar-folheto": "Baixar folheto",
+    "material": "Material",
+    "mais-imagens": "Mais imagens",
+    "video-maquina": "Assista a máquina funcionando",
+    "mesma-categoria": "Produtos da mesma categoria",
+    "sujeitas-a-mudanca": "Todas as especificações estão sujeitas à mudanças sem notificação. Em caso de dúvidas. por favor, certifique com o departamento comercial",
+    "dados-tec": "Dados técnicos",
+
+    "filtrar": "Filtrar",
+    "filtros": "Filtros",
+    "limpar": "Limpar",
+
+    "fale-conosco": "Fale conosco",
+
+    "primeira-cp": "Primeira colheitadeira de palma do mundo",
+    "desc-cp": "Máquina desenvolvida para revolucionar o agronegócio através da mecanização da cultura da palma, forrageira que faz parte da base alimentar dos rebanhos, possuindo grande valor nutritivo, resistente a longas estiagens, evitando frustações na atividade pecuária nos períodos de seca."
+  }
+}

@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  @font-face {
+    font-family: "Swiss 721 Cn BT";
+    font-weight: 400;
+    src: url('../font/swissc.ttf');
+  }
+
+  @font-face {
+    font-family: "Swiss 721 Cn BT";
+    font-weight: 600;
+    src: url('../font/swisscb.ttf');
+  }
+
+  @font-face {
+    font-family: "Swiss 721 Cn BT";
+    font-weight: 600;
+    font-style: italic;
+    src: url('../font/swisscbi.ttf');
+  }
+
+  @font-face {
+    font-family: "Swiss 721 Cn BT";
+    font-weight: 400;
+    font-style: italic;
+    src: url('../font/swissci.ttf');
+  }
+}
+
+*{
+  font-family: "Swiss 721 Cn BT";
+}
+
+html {
+  @apply scroll-smooth h-full bg-gray-50;
+}
+*::-webkit-scrollbar{
+  @apply w-[10px];
+}
+*::-webkit-scrollbar-track{
+  @apply bg-transparent;
+}
+*::-webkit-scrollbar-thumb{
+  @apply w-full bg-gray-200 hover:bg-gray-300;
+}
+
+.swiper-pagination-bullet{
+  @apply relative bottom-5;
+}
+
+.swiper-pagination-bullet-active{
+  background-color: #F16C1F !important;
+}
+
+.swiper-button-prev{
+  color: #F16C1F !important
+}
+
+.swiper-button-next{
+  color: #F16C1F !important
+}
+
+.swiper-button-prev{
+  @apply overflow-hidden left-[10px] scale-[.60];
+}
+
+.swiper-button-next{
+  @apply overflow-hidden right-[10px] scale-[.60];
+}
+
+.button{
+  @apply w-fit p-2 md:p-4 bg-black flex items-center justify-center gap-2 text-gray-100 
+  uppercase font-bold text-sm border border-orange-500; 
+}
+
+.input{
+  @apply w-full h-14 bg-gray-100 px-4 outline-none border border-transparent 
+  focus:border-gray-700 transition-all;
+}
+
+.input-width{
+  width: 260px !important;
+}
+
+.td{
+  @apply p-3 text-center;
+}
+
+.card{
+  @apply h-auto md:h-[200px] p-5 rounded border border-gray-200/50 overflow-visible md:overflow-auto 
+  shadow-md; 
+}
+
+.card::-webkit-scrollbar{
+  @apply w-1;
+}
+
+.card::-webkit-scrollbar-thumb{
+  @apply rounded-full;
+}
+
+@media screen and (max-width: 768px){
+  .swiper-button-next{
+    @apply right-[5px];
+  }
+  .swiper-button-prev{
+    @apply left-[5px];
+  }
+}

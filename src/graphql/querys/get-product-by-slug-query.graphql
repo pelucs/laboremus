@@ -1,0 +1,28 @@
+query GetProductBySlug ($slug: String) {
+  product (where: {slug: $slug}) {
+    name
+    slug
+    line
+    id
+    ncm
+    category
+    categoryEn
+    categoryEs
+    description
+    descriptionEn
+    descriptionEs
+    videoId
+    sticker{
+      url
+    }
+    manual{
+      url
+    }
+    image {
+      url
+    }
+    folder{
+      url
+    }
+  }
+}

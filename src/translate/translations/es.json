@@ -1,0 +1,169 @@
+{
+  "translation": {
+    "busque-aqui": "Busca aquí",
+    "pesquisar": "Buscar",
+    "idioma": "Idioma",
+
+    "inicio": "Comenzar",
+    "sobre": "Sobre la empresa",
+    "seja-revendedor": "Ser un revendedor",
+    "condicoes-especiais": "Condiciones especiales",
+    "linha-agricola": "Línea agrícola",
+    "linha-ecologica": "Línea ecológica",
+    "desc-agricola": "Máquinas forrajeras, cosechadoras de forraje, básculas...",
+    "desc-ecologica": "Trituradora de coco, compostaje...",
+
+    "short-desc-tro": "Equipo dirigido al área naval, desarrollado para disposición de residuos orgánicos en el mar.",
+    "desc-tro": "TRO Offshore es un equipo destinado al área naval, offshore y onshore, en plataformas petroleras, barcos, dragas posicionadas en el área externa, para disponer en el mar los residuos orgánicos generados en la cocina y en la cafetería. Según la norma MARPOPL, que exige partículas con un máximo de 25mm x 25mm.",
+    "producao-tro": "En su versión 4000n produce hasta 4000kg/h y en su versión 6000n hasta 6000kg/h. Ambas versiones producen residuos orgánicos generales.",
+    "estrutura-tro": "Estructura entegramente en chapa de acero reforzado con tratamiento superficial en baños desengrasados ​​y fosfatados, pinturas de imprimación y PU para resistir al ambiente marino ya la intemperie.",
+    "potencia-tro": "En su versión 4000n tiene un motor de 7.5hp a 10hp con velocidad de trabajo a 2600rpm y su versión 6000n tiene un motor de 15hp a 20hp con velocidad de trabajo a 2600rpm.",
+
+    "short-desc-brava": "Equipo compacto y versátil diseñado para moler y picar productos secos y verdes.",
+    "desc-brava": "Brava es un equipo compacto y versátil diseñado para moler y picar productos secos y verdes. Tiene un gran rendimiento a través de su sistema de tamices con agujeros de 1.60mm, 3.18mm, .35mm y 12.7mm. El modelo Brava tiene una versión con martillos fijos, apta para productos verdes, y una versión con martillos oscilantes, apta para productos secos.",
+    "producao-brava": "Brava produce pastos, tallos y tubérculos hasta 820 kg/h, tallos con malla hasta 200 kg/h, maíz (en mazorca) hasta 120 kg/h.",
+    "estrutura-brava": "Estructura enteramente en chapas de acero reforzado con tapa curva (fondo liso), ergonomía para mayor seguridad.",
+    "potencia-brava": "Tiene un motor eléctrico con una potencia de 2hp, voltaje de 110/220hp con una velocidad de trabajo de 3500rpm.",
+
+    "short-desc-tcg": "Equipo robusto y versátil que fue desarrollado para triturar residuos derivados de cocoteros.",
+    "desc-tcg": "El TCG15eco es un equipo robusto y versátil que fue desarrollado para triturar residuos derivados de cocoteros, como coco verde, coco seco, paja y tallo. Indicado para embotelladores de agua de coco, plantadores de coco, productores de coco seco, condominios, centros de tratamiento de residuos y alcaldías.",
+    "producao-tcg": "La TCG15eco produce coco verde hasta 3000kg/h, coco seco hasta 1000kg/h y ramas con 4m³.",
+    "estrutura-tcg": "Estructura íntegramente en chapa de acero reforzado con tratamiento superficial en baños de polvos desengrasantes, fosfatados y epoxi. Cojinetes autoalineables en rodamientos exteriores y partidos para facilitar el mantenimiento.",
+    "potencia-tcg": "Posee un motor de 15hp, velocidad de trabajo a 2600rpm con polea 100B3.",
+
+    "botao-conhecer": "Saber",
+
+    "producao": "Producción",
+    "estrutura": "Estructura",
+    "potencia": "Potencia",
+
+    "lancamento": "Lanzamiento Laboremus",
+    "lancamento-title": "Trituradora de forraje nueva. ¡A BRAVA 2 dispensa todos los comentarios!",
+    "lancamento-desc": "Toda bravura en un equipo compacto, robusto y duradero. Ideal para quien quiere potenciar su producción rural. Y ahora en versiones con martillos móviles o fijos.",
+    "card-1-title": "Robustez",
+    "card-1-desc": "Estructura en chapas de acero reforzado con cubierta curva.",
+    "card-2-title": "Producción",
+    "card-2-desc": "Hierba, tallos y tubérculos hasta 1200kg/h, estaca con pantalla hasta 430kg/h, maíz (en mazorca) hasta 350kg/h.",
+
+    "title-cards": "¿Por qué elegir Laboremus?",
+    "pioneirismo": "Pionero",
+    "inovacao": "Innovación",
+    "qualidade": "Calidad",
+    "pioneirismo-short-desc": "Comenzó fabricando trituradoras de sisal y luego desarrolló las primeras cortadoras de palma del mundo.",
+    "inovacao-short-desc": "En los años 60, perfeccionó las rebanadoras, y las transformó en máquinas combinadas, teniendo así la posibilidad de recolectar pasto, trituradoras y granos.",
+    "qualidade-short-desc": "La marca más fuerte, entregando robustez, durabilidad e innovación para el mercado agrícola y ecológico",
+
+    "mais-vendidas": "Maquinas mas vendidas",
+
+    "confira-os-produtos": "Consulta todos nuestros productos",
+    "produto-card-agri": "Palma, hierba y otros forrajes verdes",
+    "produto-card-eco": "Compost, tejidos y otros residuos orgánicos",
+
+    "empresas-lideres": "Empresas líderes que poseen máquinas Laboremus",
+
+    "feedback-title": "Generamos resultados a partir de la buena relación con el cliente",
+    "revenda": "Distribuidor",
+    "comentario-revenda-1": "Laboremus es sinónimo de precio, plazos y calidad.",
+    "comentario-revenda-2": "Han sido años de asociación y estoy muy complacido de ser uno de los revendedores más grandes en mi región y en otros estados.",
+    "comentario-revenda-3": "Los productores rurales buscan calidad y durabilidad, por eso eligen Laboremus.",
+    "comentario-revenda-4": "Vendemos dentro y fuera del estado, una excelente marca.",
+
+    "visitar-youtube": "Visita nuestro canal de youtube",
+    "botao-visitar": "Acessar canal",
+
+    "historia": "Historia",
+    "sobre-revendas": "Acerca de la reventa",
+    "produtos": "Productos",
+    "contato": "Contacto",
+    "localizacao": "Ubicación",
+    "redes-sociais": "Redes sociais",
+    "copy": "©️2023 - LABOREMUS - Industria y Comercio de Máquinas Agrícolas LTDA. Todos los derechos reservados.",
+    "dev": "Desarrollado por",
+
+    "laboremus-industria": "LABOREMUS - INDUSTRIA LTDA.",
+    "desc": "En la década de 1920, en la ciudad brasileña de Campina Grande, un empresario llamado José Luiz de Sousa inició sus negocios en la región con un taller mecánico brindando asistencia a los ingenios de caña de azúcar de la región.",
+    "missao-title": "Misión",
+    "pioneirismo-title": "Pionero",
+    "responsabilidade-title": "Responsabilidad",
+    "missao-desc": "Trascender generaciones con productos innovadores y confiables que contribuyan a la sustentabilidad y productividad de nuestra tierra.",
+    "pioneirismo-desc": "Comenzó fabricando trituradoras de sisal y luego desarrolló las primeras cortadoras de palma del mundo.",
+    "responsabilidade-desc": "Laboremus es una empresa seria que se preocupa tanto por la calidad de sus productos como por la calidad de vida de sus empleados. Estamos orgullosos de contar con un equipo experimentado comprometido con la tecnología y la funcionalidad. Hoy, el resultado de ese trabajo se ve en las diversas máquinas como trituradoras de forraje, transpaletas, básculas y trituradoras de heno y caña de azúcar.",
+
+    "tradicao-title": "Tradición y compromiso",
+    "tradicao-desc": "Laboremus es parte de la historia del agronegocio brasileño. Desde 1924 se ha comprometido a escuchar ideas y opiniones, buscando siempre servir a los productores rurales más exigentes, ya que es a través de ellos que el alimento se convierte en vida.",
+
+    "1924-1940-title": "Fundación y primeros proyectos",
+    "1924-1940-desc-1": "Con habilidad, conocimiento y visión adelantada a su tiempo, José Luiz comienza a fabricar un desfribilador de sisal y, poco después, uno de los primeros recolectores de hierba.",
+    "1924-1940-desc-2": "Laboremus, que ya trasciende generaciones, y cada vez gana más terreno en el comercio de maquinaria agrícola, optimiza el proceso de fabricación de máquinas, dejando de ser un 'taller' y ganando estatus de industria. Durante décadas, se ha mantenido firme y fuerte en la fabricación, mantenimiento y venta de estos equipos, con una fábrica/taller/almacenar en la Rua João Suassuna que da la vuelta a la cuadra y termina en la Rua João Pessoa, en el centro de Campina.",
+
+    "1950-1960-title": "Pioneros en el manejo de tuna y pasto",
+    "1950-1960-desc-1": "En los años 50 inventó la primera máquina cortadora de palma del mundo. Por necesidad.",
+    "1950-1960-desc-2": "En los años 60, inventó la máquina combinada para cortar palma y pasto y pasó a fabricar equipos en moldes actuales (segunda generación), con siete modelos disponibles en el mercado.",
+
+    "1980-1990-title": "Asociaciones e innovación",
+    "1980-1990-desc-1": "En la década de 1980, una estrecha colaboración con universidades y organismos de investigación impulsó la innovación como diferencial estratégico (tercera generación).",
+    "1980-1990-desc-2": "Desarrolla varios productos para la ganadería ovina y caprina que ha ido ganando fuerza y ​​sin maquinaria específica. Creó máquinas para palma y pasto con dimensiones más pequeñas y precisas, básculas, empacadoras y trituradoras de heno y su propio modelo de cosechadora de forraje con el diferencial de trituración de granos (kit de granos).",
+
+    "2000-2010-title": "Responsabilidad ambiental",
+    "2000-2010-1": "Lanza la línea ECO con productos destinados al medio ambiente, como trituradoras de residuos orgánicos, trituradoras de coco y ramas, trituradoras de espuma y telas, diversificando su área de actuación.",
+    "2000-2010-2": "La cuarta generación entra en escena con una visión más comercial y más enfocada a los recursos humanos.",
+
+    "2020-hoje-title": "Cumpliendo nuestro dicho de trascender generaciones con productos innovadores y de alta calidad",
+    "2020-hoje-desc-1": "Nuestro mix ya cuenta con 22 productos y amplía su área de actuación a las regiones Norte y Sudeste. Acepta el desafío de desarrollar una cosechadora de palma para iniciar la mecanización de este cultivo y fomentar el desarrollo del semiárido brasileño.",
+    "2020-hoje-desc-2": "Lanzamiento programado de la primera cosechadora de palma del mundo durante Agrishow. La internacionalización de Laboremus comienza con acciones para exportar sus productos a Latinoamérica, Centroamérica y África.",
+
+    "button-slide": "2020 - Hoy",
+
+    "entre-em-contato": "Contacto",
+    "fabrica-duvidas": "Fábrica y dudas",
+    "vendas-internas": "Ventas interiores",
+    "vendas-externas": "Ventas al exterior",
+    "demais-regioes": "Otras regiones",
+    "seja-distribuidor": "Ser nuestro distribuidor",
+    "form-desc": "Si no está interesado en realizar una llamada, tiene la opción de contactarnos a través de Whatsapp",
+    "pf": "Persona física",
+    "pj": "Persona legal",
+    "nome": "Nombre",
+    "sobrenome": "Apellido",
+    "telefone": "Teléfono",
+    "estado": "Estado",
+    "cidade": "Ciudad",
+    "endereco": "Dirección",
+    "mensagem": "Mensaje",
+    "placeholder": "Informar",
+    "botao-enviar": "Enviar mensaje",
+
+    "condicoes-especiais-desc": "No hay condiciones especiales en este momento. ¡Vuelve pronto!👍",
+
+    "destaque": "Énfasis",
+
+    "visao-geral": "Visión general",
+    "producoes": "Producciones",
+    "valores": "Los valores pueden cambiar de acuerdo a cómo se alimenta la máquina",
+    "especificacoes-tec": "Especificaciones tecnicas",
+    "especificacoes": "Especificaciones",
+    "pecas-de-repo": "Piezas de repuesto",
+    "baixar-manual": "Descargar manuale",
+    "baixar-folheto": "Descargar folleto",
+    "material": "Material",
+    "mais-imagens": "Mas imagens",
+    "video-maquina": "Mira la máquina trabajando",
+    "mesma-categoria": "Producto de la misma categoría",
+    "sujeitas-a-mudanca": "Todas las especificaciones están sujetas a cambios sin previo aviso. En caso de dudas. por favor confirmar con el departamento comercial",
+    "dados-tec": "Datos técnicos",
+
+    "filtrar": "Filtrar",
+    "filtros": "Limpiar",
+
+    "fale-conosco": "Hable con nosotros",
+
+    "dimensoes": "Dimensiones",
+    "producao-avohay": "Producción entre 50 a 100 ton/h",
+    "peso-avohay": "Peso total de la máquina 1800 kg",
+    "sistema-avohay": "Sistema hidraulico y cardan",
+    "acionamento-avohay": "Accionamiento de la toma de fuerza del tractor",
+
+    "primeira-cp": "La primera cosechadora de palma del mundo",
+    "desc-cp": "Máquina desarrollada para revolucionar la agroindustria a través de la mecanización del cultivo de la palma, forraje que forma parte de la base alimenticia de los rebaños, de gran valor nutritivo, resistente a largas sequías, evitando frustraciones en la actividad ganadera en períodos de sequía."
+  }
+}

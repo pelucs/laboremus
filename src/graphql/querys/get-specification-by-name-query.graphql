@@ -1,0 +1,14 @@
+query GetSpecificationsByName ($name: String){
+  specifications (where: {name: $name}, stage: PUBLISHED) {
+    name
+    title
+    titleEn
+    titleEs
+    data
+    dataEn
+    dataEs
+    image {
+      url
+    }
+  }
+}
