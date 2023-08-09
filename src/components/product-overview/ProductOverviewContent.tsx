@@ -8,8 +8,9 @@ import Production from "./Production";
 import SameCategory from "./SameCategory";
 import Specifications from "./Specifications";
 import ProductVideo from "./ProductVideo";
-import i18n from "../../translate";
+
 import { useTranslation } from "react-i18next";
+import { Warning } from "phosphor-react";
 
 interface ProductOverviewProps{
   slug: string;
@@ -17,6 +18,7 @@ interface ProductOverviewProps{
 
 export default ({ slug }: ProductOverviewProps) => {
 
+  const { t } = useTranslation();
   const { i18n } = useTranslation();
   const { data } = useGetProductBySlugQuery({
     variables: {
@@ -55,6 +57,30 @@ export default ({ slug }: ProductOverviewProps) => {
             <img src={data.product.image[4].url} className="h-full"/>
           </div>
         </div>
+
+        {(data.product.slug === "brava" || data.product.slug === "brava2") && (
+          <div className="w-full grid grid-cols-2">
+            <div className="bg-zinc-200 flex flex-col justify-center">
+              <img src={data.product.image[5].url} className="h-full"/>
+            </div>
+
+            <div className="px-5 md:px-7 bg-black text-white py-14 flex flex-col gap-4 items-start justify-center">
+              <div className="px-3 py-2 text-white bg-orange-500 uppercase font-bold animate-bounce">
+                {t("novidade")}
+              </div>
+
+              <p className="text-xl">
+                {t("desc-novidade")}
+              </p>
+
+              <div className="text-sm flex items-center gap-2 border border-orange-500 rounded px-4 py-3 bg-zinc-900">
+                <Warning size={24} weight="bold"/>
+
+                {t("patente")}
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="py-7 px-5 md:px-14">
           <Production slug={data.product.slug} lang={lang}/>
