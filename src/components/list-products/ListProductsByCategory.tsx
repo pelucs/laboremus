@@ -34,7 +34,7 @@ export default ({ category }: TestProps) => {
 
   return(
     <div className="py-14 border-b border-zinc-300">
-      <h1 className="text-3xl capitalize font-bold text-center md:text-left">
+      <h1 className="text-3xl uppercase font-bold text-center md:text-left">
         {category === "compostagem" || category === "offshore" ? `Triturador ${category}` : category}
       </h1>
 

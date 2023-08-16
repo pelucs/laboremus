@@ -59,8 +59,8 @@ export default ({ slug }: ProductOverviewProps) => {
         </div>
 
         {(data.product.slug === "brava" || data.product.slug === "brava2") && (
-          <div className="w-full grid grid-cols-2">
-            <div className="bg-zinc-200 flex flex-col justify-center">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2">
+            <div className="bg-zinc-200 hidden md:flex flex-col justify-center">
               <img src={data.product.image[5].url} className="h-full"/>
             </div>
 
@@ -78,6 +78,10 @@ export default ({ slug }: ProductOverviewProps) => {
 
                 {t("patente")}
               </div>
+            </div>
+
+            <div className="bg-zinc-200 md:hidden flex flex-col justify-center">
+              <img src={data.product.image[5].url} className="h-full"/>
             </div>
           </div>
         )}
