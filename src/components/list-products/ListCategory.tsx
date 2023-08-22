@@ -37,7 +37,7 @@ export default ({ line, filtered, handleFiltered }: CategoryProps) => {
       
     if(filtered.length === 0){
 
-      //PONDO A COLHEITADEIRA EM PRIMEIRO LUGAR
+      //PONDO A COLHEITADEIRA NA PRIMEIRA POSIÇÃO
       let subProduct = newFiltering.slice(0, newFiltering.length - 1);
       
       orderProducts.push(newFiltering[newFiltering.length - 1]);

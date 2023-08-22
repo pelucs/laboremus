@@ -23,6 +23,13 @@ export default () => {
   const [products, setProducts] = useState<IProducts[]>([]);
   const [researched, setResearched] = useState<ResearchedTypes[]>([]);
 
+  //LIMPAR A VARIÁVEL DE PRODUTOS CASO O MODAL ESTEJA FECHADO
+  useEffect(() => {
+    if(!open){
+      setProducts([]);
+    }
+  }, [open]);
+
   //RECÉM PESQUISADOS
   useEffect(() => {
     let result = localStorage.getItem("researched");
