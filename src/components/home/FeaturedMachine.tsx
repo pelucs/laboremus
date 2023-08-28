@@ -44,7 +44,7 @@ export default () => {
               className="hover:opacity-50 transition-all flex flex-col items-center"
             >
               <div className="h-[250px] rounded flex items-center justify-center overflow-hidden">
-                <img className="scale-150" src={product.image[0].url} loading="lazy"/>
+                <img className="scale-150" src={product.image[0].url}/>
               </div>
 
               <h1 className="mt-4 text-base md:text-xl font-bold uppercase">
