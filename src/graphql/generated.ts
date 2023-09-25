@@ -8088,6 +8088,7 @@ export type ScheduledReleaseWhereUniqueInput = {
 
 export type SparePart = Node & {
   __typename?: 'SparePart';
+  application: Array<Scalars['String']>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -8185,6 +8186,7 @@ export type SparePartConnection = {
 };
 
 export type SparePartCreateInput = {
+  application: Array<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
   machine: Scalars['String'];
@@ -8228,6 +8230,16 @@ export type SparePartManyWhereInput = {
   OR?: InputMaybe<Array<SparePartWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  application?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  application_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  application_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  application_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  application_not?: InputMaybe<Array<Scalars['String']>>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -8379,6 +8391,8 @@ export type SparePartManyWhereInput = {
 };
 
 export enum SparePartOrderByInput {
+  ApplicationAsc = 'application_ASC',
+  ApplicationDesc = 'application_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   IdAsc = 'id_ASC',
@@ -8400,6 +8414,7 @@ export enum SparePartOrderByInput {
 }
 
 export type SparePartUpdateInput = {
+  application?: InputMaybe<Array<Scalars['String']>>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
   machine?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
@@ -8426,6 +8441,7 @@ export type SparePartUpdateManyInlineInput = {
 };
 
 export type SparePartUpdateManyInput = {
+  application?: InputMaybe<Array<Scalars['String']>>;
   machine?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   parts?: InputMaybe<Array<Scalars['String']>>;
@@ -8492,6 +8508,16 @@ export type SparePartWhereInput = {
   OR?: InputMaybe<Array<SparePartWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  application?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  application_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  application_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  application_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  application_not?: InputMaybe<Array<Scalars['String']>>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -9823,12 +9849,10 @@ export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', name: string, slug: string, line: string, id: string, ncm?: string | null, category: string, categoryEn?: string | null, categoryEs?: string | null, description: string, descriptionEn?: string | null, descriptionEs?: string | null, videoId: string, sticker?: { __typename?: 'Asset', url: string } | null, manual?: { __typename?: 'Asset', url: string } | null, image: Array<{ __typename?: 'Asset', url: string }>, folder: Array<{ __typename?: 'Asset', url: string }> }> };
 
-export type GetSparePartsByMachineQueryVariables = Exact<{
-  machine?: InputMaybe<Scalars['String']>;
-}>;
+export type GetSparePartsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSparePartsByMachineQuery = { __typename?: 'Query', spareParts: Array<{ __typename?: 'SparePart', name: string, reference?: string | null, state: State, image?: { __typename?: 'Asset', url: string } | null }> };
+export type GetSparePartsQuery = { __typename?: 'Query', spareParts: Array<{ __typename?: 'SparePart', name: string, application: Array<string>, reference?: string | null, image?: { __typename?: 'Asset', url: string } | null }> };
 
 export type GetSpecificationsByNameQueryVariables = Exact<{
   name?: InputMaybe<Scalars['String']>;
@@ -10138,12 +10162,12 @@ export function useGetProductsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetProductsQueryHookResult = ReturnType<typeof useGetProductsQuery>;
 export type GetProductsLazyQueryHookResult = ReturnType<typeof useGetProductsLazyQuery>;
 export type GetProductsQueryResult = Apollo.QueryResult<GetProductsQuery, GetProductsQueryVariables>;
-export const GetSparePartsByMachineDocument = gql`
-    query GetSparePartsByMachine($machine: String) {
-  spareParts(where: {machine: $machine}, last: 200) {
+export const GetSparePartsDocument = gql`
+    query GetSpareParts {
+  spareParts(last: 200) {
     name
+    application
     reference
-    state
     image {
       url
     }
@@ -10152,32 +10176,31 @@ export const GetSparePartsByMachineDocument = gql`
     `;
 
 /**
- * __useGetSparePartsByMachineQuery__
+ * __useGetSparePartsQuery__
  *
- * To run a query within a React component, call `useGetSparePartsByMachineQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSparePartsByMachineQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetSparePartsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSparePartsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetSparePartsByMachineQuery({
+ * const { data, loading, error } = useGetSparePartsQuery({
  *   variables: {
- *      machine: // value for 'machine'
  *   },
  * });
  */
-export function useGetSparePartsByMachineQuery(baseOptions?: Apollo.QueryHookOptions<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>) {
+export function useGetSparePartsQuery(baseOptions?: Apollo.QueryHookOptions<GetSparePartsQuery, GetSparePartsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>(GetSparePartsByMachineDocument, options);
+        return Apollo.useQuery<GetSparePartsQuery, GetSparePartsQueryVariables>(GetSparePartsDocument, options);
       }
-export function useGetSparePartsByMachineLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>) {
+export function useGetSparePartsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSparePartsQuery, GetSparePartsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>(GetSparePartsByMachineDocument, options);
+          return Apollo.useLazyQuery<GetSparePartsQuery, GetSparePartsQueryVariables>(GetSparePartsDocument, options);
         }
-export type GetSparePartsByMachineQueryHookResult = ReturnType<typeof useGetSparePartsByMachineQuery>;
-export type GetSparePartsByMachineLazyQueryHookResult = ReturnType<typeof useGetSparePartsByMachineLazyQuery>;
-export type GetSparePartsByMachineQueryResult = Apollo.QueryResult<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>;
+export type GetSparePartsQueryHookResult = ReturnType<typeof useGetSparePartsQuery>;
+export type GetSparePartsLazyQueryHookResult = ReturnType<typeof useGetSparePartsLazyQuery>;
+export type GetSparePartsQueryResult = Apollo.QueryResult<GetSparePartsQuery, GetSparePartsQueryVariables>;
 export const GetSpecificationsByNameDocument = gql`
     query GetSpecificationsByName($name: String) {
   specifications(where: {name: $name}, stage: PUBLISHED) {

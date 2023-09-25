@@ -1,0 +1,10 @@
+query GetSpareParts{
+  spareParts (last: 200){
+    name
+    application
+    reference
+    image {
+      url
+    }
+  }
+}

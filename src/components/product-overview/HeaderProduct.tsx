@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { IProducts } from "../../types";
 import { Eye, Gear } from "phosphor-react";
 import { useTranslation } from "react-i18next";
-import { useGetSparePartsByMachineQuery } from "../../graphql/generated";
 
 import Loading from "../Loading";
 interface HeaderProductProps{
@@ -13,18 +12,6 @@ export default ({ product }: HeaderProductProps) => {
 
   const { t } = useTranslation();
 
-  const { data } = useGetSparePartsByMachineQuery({
-    variables: {
-      machine: product.slug
-    }
-  });
-
-  if(!data || !data.spareParts){
-    return <Loading/>
-  }
-
-  console.log(data.spareParts.length)
-  
   return(
     <div className="w-full h-16 px-5 md:px-7 py-3 flex items-center justify-between">
       {product.sticker ? (

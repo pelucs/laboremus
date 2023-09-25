@@ -25,16 +25,6 @@ export default ({ slug }: SparePartsContent) => {
       <HeaderProduct product={data.product}/>
 
       <div className="mt-10 md:mt-0 py-10 px-5 md:px-7">
-        <strong className="text-2xl md:text-4xl uppercase font-bold">
-          Peças de reposição
-        </strong>
-
-        <p className="mt-2 flex items-center gap-2">
-          <WarningCircle size={20} className="text-orange-500"/>
-          
-          Imagens meramente ilustrativas
-        </p>
-
         <ListSpareParts slug={slug}/>
       </div>
     </div>
