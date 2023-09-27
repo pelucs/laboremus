@@ -38,7 +38,7 @@ export default ({ slug }: ListSparePartsProps) => {
       {spareParts.length > 0 ? (
         <div>
           <strong className="text-2xl md:text-4xl uppercase font-bold">
-            Peças de reposição
+            Peças de reposição - {slug}
           </strong>
 
           <p className="w-fit py-2 px-3 rounded mt-2 flex items-center gap-1 bg-zinc-200">
@@ -47,7 +47,7 @@ export default ({ slug }: ListSparePartsProps) => {
             Imagens meramente ilustrativas
           </p>
 
-          <div className="mt-10 grid grid-cols-4 gap-10">
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10">
             {spareParts.map(part => (
               <div key={part.name}>
                 <div className="w-full h-[200px] bg-zinc-200 flex items-center justify-center overflow-hidden">

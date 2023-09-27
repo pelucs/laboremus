@@ -1,61 +1,9 @@
 import { useTranslation } from "react-i18next";
-
-interface EmployeesTypes{
-  name: string;
-  cargo: string;
-  contact: string;
-  email: string;
-  state: string;
-}
+import { employees } from "../../utils/employees";
 
 export default () => {
 
   const { t } = useTranslation();
-
-  const employees: EmployeesTypes[] = [
-    {
-      name: "Dayse Felix",
-      cargo: t("vendas-internas"),
-      contact: "+55 (83) 98223-7322",
-      email: "dayse.felix@laboremus.com.br",
-      state: "MA • CE • PE • PI • MG • RN"
-    },
-    {
-      name: "Dean Alves",
-      cargo: t("vendas-externas"),
-      contact: "+55 (83) 98224-6538",
-      email: "dean.alves@laboremus.com.br",
-      state: "PB • RN"
-    },
-    {
-      name: "Mirella Suemy",
-      cargo: t("vendas-internas"),
-      contact: "+55 (83) 98832-0887",
-      email: "mirella.suemy@laboremus.com.br",
-      state: `PB • AL • SE • ${t("demais-regioes")}`
-    },
-    {
-      name: "Marcelo Ribeiro",
-      cargo: t("vendas-internas"),
-      contact: "+55 (83) 98654-6821",
-      email: "marcelo.ribeiro@laboremus.com.br",
-      state: ""
-    },
-    {
-      name: "Patrícia Moreno",
-      cargo: t("vendas-internas"),
-      contact: "+55 (83) 98832-6230",
-      email: "patricia.moreno@laboremus.com.br",
-      state: "BA • ES"
-    },
-    {
-      name: "Germínia Souza",
-      cargo: t("fabrica-duvidas"),
-      contact: "+55 (83) 99615-5209",
-      email: "germinia.santos@laboremus.com.br",
-      state: ""
-    }
-  ];
 
   return(
     <div className="w-full md:w-[460px] p-5 flex flex-col items-center md:items-start md:border-r 

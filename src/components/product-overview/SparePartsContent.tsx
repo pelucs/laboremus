@@ -24,7 +24,7 @@ export default ({ slug }: SparePartsContent) => {
     <div className="w-full min-h-screen">
       <HeaderProduct product={data.product}/>
 
-      <div className="mt-10 md:mt-0 py-10 px-5 md:px-7">
+      <div className="md:mt-0 py-10 px-5 md:px-7">
         <ListSpareParts slug={slug}/>
       </div>
     </div>
