@@ -44,6 +44,14 @@ export default () => {
           >
             {t("seja-revendedor")}
           </Link>
+
+          <Link 
+            to="/pecas-de-reposicao" 
+            className="h-[60px] flex items-center justify-center gap-3 uppercase font-bold text-xs 
+            text-gray-300 px-4 hover:bg-gray-700 hover:text-white transition-colors"
+          >
+            {t("pecas-de-reposicao")}
+          </Link>
         </div>
 
         <div className="flex h-full">

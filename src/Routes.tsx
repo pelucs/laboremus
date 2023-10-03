@@ -7,9 +7,9 @@ import Home from './pages/Home';
 import Work from './pages/Work';
 import ListProducts from './pages/ListProducts';
 import ProductOverview from './pages/ProductOverview';
-import SpecialConditions from './pages/SpecialConditions';
 import SpareParts from './pages/SpareParts';
 import FinalClient from './pages/FinalClient';
+import SparePartsRoute from './pages/SparePartsRoute';
 
 export default () => {
 
@@ -21,7 +21,7 @@ export default () => {
       <Route path='/historia' element={ data ? <About/> : <Loading/>}/>
       <Route path='/seja-revenda' element={ data ? <Work/> : <Loading/>}/>
       <Route path='/onde-comprar' element={ data ? <FinalClient/> : <Loading/>}/>
-      <Route path='/condicoes-especiais' element={ data ? <SpecialConditions/> : <Loading/>}/>
+      <Route path='/pecas-de-reposicao' element={ data ? <SparePartsRoute/> : <Loading/>}/>
       <Route path='/:line' element={ data ? <ListProducts/> : <Loading/>}/>
       <Route path='/:category/:slug' element={ data ? <ProductOverview/> : <Loading/>}/>
       <Route path='/:category/:slug/pecas-de-reposicao' element={ data ? <SpareParts/> : <Loading/>}/>

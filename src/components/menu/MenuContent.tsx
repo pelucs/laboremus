@@ -83,6 +83,21 @@ export default ({ activeMenu, setActiveMenu }: MenuContentProps) => {
             className="text-orange-500"
           />
         </Link>
+
+        <Link
+          to="/pecas-de-reposicao"
+          onClick={handleMenu}
+          className="hover:bg-gray-500 bg-gray-600 w-full h-20 px-5 uppercase text-white text-lg 
+          font-bold flex items-center justify-between transition-colors"
+        >
+          {t("pecas-de-reposicao")}
+
+          <CaretRight
+            size={18}
+            weight="bold"
+            className="text-orange-500"
+          />
+        </Link>
       </div>
 
       <div className="mt-10">

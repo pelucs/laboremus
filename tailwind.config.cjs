@@ -16,7 +16,7 @@ module.exports = {
         sm: "0 0 5px rgba(0, 0, 0, 0.15)"
       },
       fontFamily: {
-        sans: ['Swiss 721 Cn BT, Inter, sans-serif']
+        sans: ['Sofia Sans Condensed, sans-serif']
       },
       colors: {
         green: {

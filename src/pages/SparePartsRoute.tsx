@@ -3,6 +3,7 @@ import FloatingButtons from "../components/FloatingButtons";
 import Footer from "../components/Footer";
 import SubHeader from "../components/header/SubHeader";
 import WorkContent from "../components/work/WorkContent";
+import SparePartsContent from "../components/spareparts/SparePartsContent";
 
 export default () => {
   
@@ -10,11 +11,10 @@ export default () => {
 
   return(
     <div className="min-h-screen">
-      {/* <WarningModal/> */}
       <FloatingButtons/>
       <Header/>
       <SubHeader/>
-      <WorkContent/>
+      <SparePartsContent/>
       <Footer/>
     </div>
   );

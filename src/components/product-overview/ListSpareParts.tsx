@@ -2,7 +2,7 @@ import { WarningCircle } from "phosphor-react";
 import { useGetSparePartsQuery } from "../../graphql/generated";
 import { useEffect, useState } from "react";
 
-interface SparePartsType{
+export interface SparePartsType{
   name: string;
   application: string[];
   reference?: string | null | undefined;
