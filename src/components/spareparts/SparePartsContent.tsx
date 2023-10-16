@@ -77,6 +77,7 @@ export default () => {
               <button 
                 onClick={() => {
                   navigator.clipboard.writeText(`https://laboremus.com.br/pecas-de-reposicao?ref=${part.reference}`)
+                  alert("Copiado para área de transferência!")
                 }}
                 className="w-full h-[200px] bg-zinc-200 flex items-center justify-center overflow-hidden"
               >
