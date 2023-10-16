@@ -20,32 +20,32 @@ export default ({ slug }: ListSparePartsProps) => {
   const [spareParts, setSpareParts] = useState<SparePartsType[]>([]);
 
   useEffect(() => {
-
     if(data?.spareParts){
-
       data.spareParts.forEach(parts => {
         if(parts.application.includes(slug)){
           setSpareParts(prevList => [parts, ...prevList]);
         }     
       })
-
     }
-
   }, [data]);
 
   return(
     <div>
       {spareParts.length > 0 ? (
         <div>
-          <strong className="text-2xl md:text-4xl uppercase font-bold">
-            Peças de reposição - {slug}
-          </strong>
+          <div className="">
+            <strong className="text-2xl md:text-4xl uppercase font-bold">
+              Peças de reposição - {slug.replace("-", " ")}
+            </strong>
 
-          <p className="w-fit py-2 px-3 rounded mt-2 flex items-center gap-1 bg-zinc-200">
-            <WarningCircle size={20} className="text-orange-500"/>
-            
-            Imagens meramente ilustrativas
-          </p>
+            <p className="w-fit mt-2 py-1 px-3 flex items-center gap-1 bg-zinc-200 text-sm">
+              <WarningCircle size={20} className="text-orange-500"/>
+              
+              Imagens meramente ilustrativas
+            </p>
+          </div>
+
+          <hr className="w-full h-[1px] bg-zinc-300 border-none my-5"/>
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10">
             {spareParts.map(part => (

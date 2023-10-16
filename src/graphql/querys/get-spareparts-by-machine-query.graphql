@@ -1,0 +1,10 @@
+query GetSparePartsByMachine ($machine: String) {
+  spareParts (where: {machine: $machine}, last: 200) {
+    name
+    reference
+    state
+    image {
+      url
+    }
+  }
+}
