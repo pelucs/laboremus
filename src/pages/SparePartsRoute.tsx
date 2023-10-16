@@ -2,7 +2,6 @@ import Header from "../components/header/Header";
 import FloatingButtons from "../components/FloatingButtons";
 import Footer from "../components/Footer";
 import SubHeader from "../components/header/SubHeader";
-import WorkContent from "../components/work/WorkContent";
 import SparePartsContent from "../components/spareparts/SparePartsContent";
 
 export default () => {

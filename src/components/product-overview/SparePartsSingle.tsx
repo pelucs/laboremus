@@ -1,4 +1,3 @@
-import { WarningCircle } from "phosphor-react";
 import { useGetProductBySlugQuery } from "../../graphql/generated";
 import Loading from "../Loading";
 import HeaderProduct from "./HeaderProduct";
@@ -25,7 +24,10 @@ export default ({ slug }: SparePartsContent) => {
       <HeaderProduct product={data.product}/>
 
       <div className="md:mt-0 py-10 px-5 md:px-7">
-        <ListSpareParts slug={slug}/>
+        <ListSpareParts 
+          slug={slug} 
+          line={data.product.line === "linha agrícola" ? "linha-agricola" : "linha-ecologica"}
+        />
       </div>
     </div>
   );

@@ -67,7 +67,7 @@ export default () => {
         </h1>
       )}
 
-      <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10">
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-10">
         {filteringSpareParts.length > 0 ? (
           filteringSpareParts.map((part, i) => (
             <div 
@@ -108,7 +108,7 @@ export default () => {
                     Aplicações:
                   </strong>
   
-                  <div className="mt-2 grid grid-cols-2 border-y">
+                  <div className="mt-2 grid grid-cols-1 md:grid-cols-2 border-y divide-y-[1px] md:divide-y-0">
                     {part.application.map((machine, i) => (
                       <span key={i} className="py-1 px-2 uppercase">
                         •  {machine.replace("-", " ")}
