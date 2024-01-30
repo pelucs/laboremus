@@ -4,15 +4,15 @@ import { useTranslation } from 'react-i18next';
 
 import SlideSettings from '../SlideSettings';
 
-import img1 from '../../../public/assets/about/img.jpg';
-import img2 from '../../../public/assets/about/img5.jpg';
-import img3 from '../../../public/assets/about/fatiador.jpg';
-import img4 from '../../../public/assets/about/conjug.jpeg';
-import img6 from '../../../public/assets/about/bl.jpeg';
-import img7 from '../../../public/assets/about/img8.jpeg';
-import img8 from '../../../public/assets/about/tro.jpg';
-import img9 from '../../../public/assets/about/mix.jpeg';
-import img10 from '../../../public/assets/about/cpl.jpg';
+import img1 from '../../assets/about/img.jpg';
+import img2 from '../../assets/about/img5.jpg';
+import img3 from '../../assets/about/fatiador.jpg';
+import img4 from '../../assets/about/conjug.jpeg';
+import img6 from '../../assets/about/bl.jpeg';
+import img7 from '../../assets/about/img8.jpeg';
+import img8 from '../../assets/about/tro.jpg';
+import img9 from '../../assets/about/mix.jpeg';
+import img10 from '../../assets/about/cpl.jpg';
 
 interface TypeSlides{
   year: string;

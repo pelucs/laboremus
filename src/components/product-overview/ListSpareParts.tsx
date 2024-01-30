@@ -49,20 +49,6 @@ export default ({ slug, line }: ListSparePartsProps) => {
     <div>
       {spareParts.length > 0 ? (
         <div>
-          <div className="">
-            <strong className="text-2xl md:text-4xl uppercase font-bold">
-              Peças de reposição - {slug.replace("-", " ")}
-            </strong>
-
-            <p className="w-fit mt-2 py-1 px-3 flex items-center gap-1 bg-zinc-200 text-sm">
-              <WarningCircle size={20} className="text-orange-500"/>
-              
-              Imagens meramente ilustrativas
-            </p>
-          </div>
-
-          <hr className="w-full h-[1px] bg-zinc-300 border-none my-5"/>
-
           <div
             className="w-full md:w-80 py-2 px-3 bg-zinc-200 flex items-center gap-2 text-gray-300 border
             border-transparent hover:border-gray-500 transition-all outline-none"

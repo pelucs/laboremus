@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Brands from "./Brands";
 import Cards from "./Cards";
 import FeaturedMachine from "./FeaturedMachine";
@@ -7,13 +6,13 @@ import Products from "./Products";
 import SlideProduct from "./SlideProduct";
 import Trending from "./Trending";
 import Video from "./VideoHome";
-import Intro from "./Intro";
+import Hero from "./Hero";
 
 export default () => {
 
   return(
     <>
-      <Intro/>
+      <Hero/>
       <Trending/>
       <Cards/>
       <SlideProduct/>

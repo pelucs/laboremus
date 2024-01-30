@@ -4,7 +4,6 @@ import FloatingButtons from "../components/FloatingButtons";
 import Footer from "../components/Footer";
 import Header from "../components/header/Header";
 import Loading from "../components/Loading";
-import SubHeader from "../components/header/SubHeader";
 import SparePartsSingle from "../components/product-overview/SparePartsSingle";
 
 export default () => {
@@ -17,7 +16,6 @@ export default () => {
     <>
       <FloatingButtons/>
       <Header/>
-      <SubHeader/>
       {
         slug ? <SparePartsSingle slug={slug}/>
         : <Loading/>

@@ -34,7 +34,7 @@ export default ({ lineProducts }: ProductsProps) => {
   }, [filteredProducts]);
 
   return(
-    <div className="min-h-screen mt-16 pb-20">
+    <div className="min-h-screen pb-20">
       <div className="bg-gray-50 border-b border-gray-200/50">
         <div className="w-full h-14 md:h-20 px-5 md:px-7 flex items-center justify-between z-50">
           <strong className="text-xl md:text-4xl capitalize">

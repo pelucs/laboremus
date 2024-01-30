@@ -35,7 +35,7 @@ export default ({ slug }: SparePartsContent) => {
           Imagens meramente ilustrativas
         </p>
 
-        <ListSpareParts slug={slug}/>
+        <ListSpareParts line={data.product.line} slug={slug}/>
       </div>
     </div>
   );

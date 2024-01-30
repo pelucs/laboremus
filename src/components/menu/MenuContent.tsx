@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { CaretRight, MapPin, Tag, UserCircle } from "phosphor-react";
+import { CaretRight } from "phosphor-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import MenuProducts from "./MenuProducts";
@@ -17,7 +17,7 @@ export default ({ activeMenu, setActiveMenu }: MenuContentProps) => {
   }
 
   return(
-    <div className={classNames("relative top-16 w-full bg-gray-200 overflow-hidden transition-all", {
+    <div className={classNames("relative w-full bg-gray-200 overflow-hidden transition-all", {
       "h-screen": activeMenu,
       "h-0": !activeMenu
     })}>

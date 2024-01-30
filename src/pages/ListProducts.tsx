@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import Header from "../components/header/Header";
 import Loading from "../components/Loading";
 import ListProductsContent from "../components/list-products/ListProductsContent";
-import SubHeader from "../components/header/SubHeader";
 
 export default () => {
 
@@ -16,7 +15,6 @@ export default () => {
     <>
       <FloatingButtons/>
       <Header/>
-      <SubHeader/>
       {
         line ? <ListProductsContent lineProducts={line} />
         : <Loading/>

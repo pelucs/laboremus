@@ -32,7 +32,7 @@ export default () => {
   : spareParts;
 
   return(
-    <div className="mt-20 md:mt-24 px-5 md:px-7 pb-10 md:pb-20 min-h-screen">
+    <div className="mt-5 px-5 md:px-7 pb-10 md:pb-20 min-h-screen">
       <div>
         <strong className="text-2xl md:text-4xl uppercase font-bold">
           Peças de reposição
