@@ -4,15 +4,11 @@ import { X } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import banner from '../../../public/silagem.png';
+import banner from '/aviso.png';
 
 export default () => {
 
-  const [activeModal, setActiveModal] = useState<boolean>(false);
-
-  useEffect(() => {
-    setTimeout(() => setActiveModal(false), 2000);
-  }, []);
+  const [activeModal, setActiveModal] = useState<boolean>(true);
 
   return(
     <div className={classNames("w-full h-screen fixed inset-0 z-50 transition-all", {

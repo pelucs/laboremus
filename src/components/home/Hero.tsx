@@ -6,7 +6,7 @@ export default () => {
   const { t } = useTranslation();
 
   return(
-    <div className="w-full h-screen px-5  bg-[url(/bg.png)] bg-center bg-cover flex flex-col items-center">
+    <div className="w-full h-[80vh] md:h-screen px-5 bg-[url(/bg1.png)] md:bg-[url(/bg.png)] bg-bottom md:bg-center bg-cover flex flex-col items-center">
       <h1 className="pt-14 text-4xl md:text-6xl text-center font-bold">
         Há Um Século Cultivando <br/>
         Inovação e Qualidade

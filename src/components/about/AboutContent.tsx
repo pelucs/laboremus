@@ -1,7 +1,7 @@
 //IMAGENS HISTÓRICAS
 import { useTranslation } from 'react-i18next';
-import History from './History';
 import { useEffect } from 'react';
+import History from './History';
 
 export default () => {
 
@@ -13,8 +13,8 @@ export default () => {
 
   return(
     <div className="flex-1 min-h-screen">
-      <div className="relative min-h-screen bg-banner1Md md:bg-banner1 bg-cover bg-center">
-        <div className="mt-16 md:mt-0 px-5 py-10 md:py-0 md:px-20 w-full min-h-screen flex flex-col 
+      <div className="relative h-[80vh] md:min-h-screen bg-banner1Md md:bg-banner1 bg-cover bg-center">
+        <div className="px-5 py-20 md:py-0 md:px-20 w-full min-h-screen flex flex-col 
         items-center md:items-start justify-start md:justify-center">
           <strong className="text-3xl md:text-5xl text-white uppercase text-center">
             {t("laboremus-industria")}
@@ -38,7 +38,7 @@ export default () => {
           </strong>
 
           <p className="text-center text-base md:text-lg">
-            {t("missao-desc")}
+            Atuar com pioneirismo, liderando com qualidade e robustez, na concepção e entrega de máquinas e implementos, agrícolas e ecológicos; promovendo, a satisfação daqueles que nos depositam a sua confiança
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export default () => {
           </strong>
 
           <p className="text-center text-base md:text-lg">
-            {t("pioneirismo-desc")}
+            Ser marca forte do cenário nacional, atuando em prol da sustentabilidade e elevando a qualidade de vida na cadeia produtiva do agronegócio. Manter crescimento e longevidade empresarial, construindo novas e promissoras histórias que transcendam gerações.
           </p>
         </div>
 

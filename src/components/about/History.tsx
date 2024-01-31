@@ -40,7 +40,7 @@ export default () => {
           img: img1
         },
         {
-          desc: t("1924-1940-desc-1"),
+          desc: "Localizado no coração de Campina Grande, lá a Laboremus prospera como um centro inovador de desenvolvimento e fabricação. Especializada na criação das primeiras forrageiras de qualidade, a Laboremus está no epicentro da revolução agrícola, fornecendo soluções avançadas para otimizar a produção de alimentos",
           img: img2
         },
       ]
@@ -50,7 +50,7 @@ export default () => {
       desc: t("1950-1960-title"),
       infos: [
         {
-          desc: t("1950-1960-desc-1"),
+          desc: "Na década de 50, a Laboremus não apenas se estabeleceu como uma referência na fabricação de forrageiras, mas também marcou um marco revolucionário ao inventar o primeiro fatiador de palma do mundo.",
           img: img3
         },
         {

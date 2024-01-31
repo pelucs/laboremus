@@ -6,8 +6,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         bgSialgem: "url(/public/silagem.png)",
-        banner1: "url(/public/assets/about/img2.png)",
-        banner1Md: "url(/public/assets/about/img2-md.png)",
+        banner1: "url(/luiz.png)",
+        banner1Md: "url(/luiz1.png)",
         banner2: "url(/public/assets/about/img4.png)",
         banner2Md: "url(/public/assets/about/img4-md.png)",
         gradientFeedbacks: "linear-gradient(to top, #fff, transparent 95%)"
