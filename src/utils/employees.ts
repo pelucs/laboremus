@@ -52,20 +52,6 @@ export const employees: EmployeesTypes[] = [
     state: ""
   },
   {
-    name: "Isaac Oliveira",
-    cargo: "Representante ",
-    contact: "+55 (81) 99946-0504",
-    email: "repisavendas@hotmail.com",
-    state: "PE"
-  },
-  {
-    name: "J. Escoura",
-    cargo: "Representante",
-    contact: "+55 (79) 99134-1851",
-    email: "",
-    state: "AL • SE"
-  },
-  {
     name: "Paulino Gaia",
     cargo: "Representante",
     contact: "+55 (88) 99991-8891",
