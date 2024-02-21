@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FacebookLogo, InstagramLogo, TiktokLogo, YoutubeLogo } from "phosphor-react";
 
-import plucs from '../assets/icons/plucs.svg';
+import pl from '../assets/icons/logo-pl.svg';
 
 export default () => {
 
@@ -142,15 +142,19 @@ export default () => {
 
       {/* ----------------------------------------------------- */}
 
-      <div className="px-5 md:px-7 py-5 bg-black flex flex-col gap-5 md:gap-0 md:flex-row items-center 
-      justify-between text-gray-300">
-        <h1 className="text-center text-xs md:text-sm">
-          {t("copy")}
+      <div className="px-5 md:px-7 py-5 bg-black flex flex-col items-center justify-center gap-6 text-gray-300">
+        <h1 className="text-center flex flex-col items-start justify-center">
+          {t("copy")} <br/> Todos os direitos reservados.
         </h1>
         
-        <h1 className="flex items-center gap-1 text-xs md:text-sm font-medium">
-          {t("dev")} <a href="https://pelucs.com/" target="_blank"><img src={plucs} className="w-[55px] relative bottom-[2px]"/></a>
-        </h1>
+        <a 
+          href="https://pelucs.com" 
+          target="_blank" 
+          className="flex items-center gap-2 font-medium text-white transition-all opacity-50 hover:opacity-100">
+          Desenvolvido por
+
+          <img src={pl} className="w-[20px]"/>
+        </a>
       </div>
     </div>
   );
