@@ -30,7 +30,7 @@ export default ({ name, line, lang, ncm }: SpecificationsProps) => {
         {t("especificacoes-tec")}
       </strong>
       
-      <div className={classNames("mt-14 w-full grid grid-cols-1 gap-10 place-items-center", {
+      <div className={classNames("mt-14 w-full grid grid-cols-1 gap-10", {
         "md:grid-cols-2": data.specifications.length > 1,
         "md:grid-cols-1": data.specifications.length < 1
       })}>
@@ -39,7 +39,7 @@ export default ({ name, line, lang, ncm }: SpecificationsProps) => {
             <img src={spec.image.url} loading="lazy"/>
 
             <div className="mt-10 w-full">
-              <div className="w-full py-3 bg-black flex items-center justify-center">
+              <div className="w-full py-3 bg-black flex items-center justify-center rounded-tl-xl rounded-tr-xl">
                 <strong className="text-white">
                   {t("especificacoes")}
                 </strong>
@@ -99,7 +99,7 @@ export default ({ name, line, lang, ncm }: SpecificationsProps) => {
               )}
             </div>
 
-            <div className="px-4 h-12 bg-black text-white flex items-center">
+            <div className="px-4 h-12 bg-black text-white flex items-center rounded-bl-xl rounded-br-xl">
               {ncm && (
                 <h1>
                   <span className="font-bold">NCM:</span> {ncm}

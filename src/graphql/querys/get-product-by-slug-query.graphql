@@ -12,6 +12,9 @@ query GetProductBySlug ($slug: String) {
     descriptionEn
     descriptionEs
     videoId
+    desc {
+      html
+    }
     sticker{
       url
     }

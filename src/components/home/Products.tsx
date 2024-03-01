@@ -9,7 +9,7 @@ export default () => {
   const { t } = useTranslation();
 
   return(
-    <div className="mt-10 md:mt-20 px-5 md:px-7">
+    <div id="products" className="mt-10 md:mt-20 px-5 md:px-7">
       <div>
         <h1 className="text-2xl md:text-4xl uppercase text-center font-bold">
           {t("confira-os-produtos")}

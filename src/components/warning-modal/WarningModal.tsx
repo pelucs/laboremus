@@ -8,7 +8,7 @@ import banner from '/aviso.png';
 
 export default () => {
 
-  const [activeModal, setActiveModal] = useState<boolean>(true);
+  const [activeModal, setActiveModal] = useState<boolean>(false);
 
   return(
     <div className={classNames("w-full h-screen fixed inset-0 z-50 transition-all", {

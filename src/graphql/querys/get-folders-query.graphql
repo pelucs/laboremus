@@ -1,0 +1,8 @@
+query GetFolders {
+  folders (stage: PUBLISHED, last: 100){
+    category
+    folder{
+      url
+    }
+  } 
+}

@@ -2,10 +2,11 @@ import { useGetProductsByCategoryQuery } from "../../graphql/generated";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { CaretRight } from "phosphor-react";
 
 import Loading from "../Loading";
 import i18next from "i18next";
-import { CaretRight } from "phosphor-react";
+import Folders from "./Folders";
 
 interface TestProps{
   category: string;
@@ -34,9 +35,13 @@ export default ({ category }: TestProps) => {
 
   return(
     <div className="py-14 border-b border-zinc-300">
-      <h1 className="text-3xl uppercase font-bold text-center md:text-left">
-        {category === "compostagem" || category === "offshore" ? `Triturador ${category}` : category}
-      </h1>
+      <div className="flex items-center gap-4">
+        <h1 className="text-3xl uppercase font-bold text-left leading-none">
+          {category === "compostagem" || category === "offshore" ? `Triturador ${category}` : category}
+        </h1>
+
+        <Folders category={category}/>
+      </div>
 
       <div className={`w-full mt-5 grid grid-cols-1 md:grid-cols-3 place-items-center gap-5 md:gap-10`}>
         {data.products.map(product => (

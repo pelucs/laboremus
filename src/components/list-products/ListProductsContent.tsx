@@ -2,7 +2,6 @@ import classNames from "classnames";
 
 import { useEffect, useState } from "react";
 
-import FilteringModal from "./FilteringModal";
 import ListCategory from "./ListCategory";
 
 import { X } from "phosphor-react";
@@ -36,16 +35,10 @@ export default ({ lineProducts }: ProductsProps) => {
   return(
     <div className="min-h-screen pb-20">
       <div className="bg-gray-50 border-b border-gray-200/50">
-        <div className="w-full h-14 md:h-20 px-5 md:px-7 flex items-center justify-between z-50">
-          <strong className="text-xl md:text-4xl capitalize">
+        <div className="px-7 py-4">
+          <strong className="text-4xl capitalize">
             {lineProducts === "linha-agricola" ? t("linha-agricola") : t("linha-ecologica")}
           </strong>
-
-          <FilteringModal 
-            category={lineProducts} 
-            filtered={filteredProducts} 
-            handleFiltered={setFilteredProducts}
-          />
         </div>
 
         <div className={classNames("max-w-screen h-14 px-5 md:px-7 bg-gray-100 flex items-center justify-between overflow-hidden transition-all", {
@@ -90,11 +83,7 @@ export default ({ lineProducts }: ProductsProps) => {
         </div>
       </div>
 
-      <ListCategory 
-        line={lineProducts}
-        filtered={filteredProducts}
-        handleFiltered={setFilteredProducts}
-      />
+      <ListCategory line={lineProducts}/>
     </div>
   );
 }

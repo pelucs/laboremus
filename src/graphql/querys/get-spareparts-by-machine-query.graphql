@@ -1,5 +1,5 @@
-query GetSparePartsByMachine ($machine: String) {
-  spareParts (where: {machine: $machine}, last: 200) {
+query GetSparePartsByMachine ($name: String) {
+  spareParts (where: {name: $name}, last: 200) {
     name
     reference
     state

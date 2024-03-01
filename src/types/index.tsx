@@ -11,6 +11,9 @@ export interface IProducts {
   descriptionEn?: string | null | undefined;
   descriptionEs?: string | null | undefined;
   videoId: string,
+  desc?: {
+    html: string
+  } | null | undefined,
   sticker?: {
     url: string
   } | null | undefined

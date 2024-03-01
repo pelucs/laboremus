@@ -29,7 +29,7 @@ export default ({ slug, lang }: ProductOverviewProps) => {
       </strong>
       
       <div className="mt-14 w-full max-w-2xl">
-        <div className="w-full py-3 bg-black flex items-center justify-center">
+        <div className="w-full py-3 bg-black flex items-center justify-center rounded-tl-xl rounded-tr-xl">
           <strong className="text-white">
             {t("producao")}
           </strong>
@@ -89,7 +89,7 @@ export default ({ slug, lang }: ProductOverviewProps) => {
         )}
       </div>
 
-      <div className="w-full max-w-2xl p-3 bg-black text-white
+      <div className="w-full max-w-2xl p-3 bg-black rounded-bl-xl rounded-br-xl text-white
       flex items-center gap-2">
         <WarningCircle size={24} className="text-orange-500"/>
 

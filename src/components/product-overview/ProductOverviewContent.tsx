@@ -51,7 +51,7 @@ export default ({ slug }: ProductOverviewProps) => {
             e robustez na sua propriedade
           </h1>
 
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="mt-20 relative grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="space-y-5">
               <div>
                 <h1 className="text-xl font-semibold uppercase">
@@ -68,9 +68,16 @@ export default ({ slug }: ProductOverviewProps) => {
               <div>
                 <span className="uppercase font-semibold text-muted-foreground">Descrição</span>
 
-                <p className="text-xl md:text-2xl font-medium leading-none">
-                  {data.product.description}
-                </p>
+                <div>
+                  {data.product.desc ? (
+                    <div 
+                      className="text-xl flex flex-col gap-3 leading-tight" 
+                      dangerouslySetInnerHTML={{ __html: data.product.desc.html }} 
+                    />
+                  ) : (
+                    data.product.description
+                  )}
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-5">
@@ -94,12 +101,14 @@ export default ({ slug }: ProductOverviewProps) => {
               </div>
             </div>
 
-            <ImageProduct images={data.product.image}/>
+            <div className="relative">
+              <ImageProduct  images={data.product.image}/>
+            </div>
           </div>
         </div>
 
         {(data.product.slug === "brava" || data.product.slug === "brava2") && (
-          <div className="w-full grid grid-cols-1 md:grid-cols-2">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-10">
             <div className="bg-zinc-200 hidden md:flex flex-col justify-center">
               <img src={data.product.image[5].url} className="h-full"/>
             </div>

@@ -11,7 +11,7 @@ export default ({ images }: ImageProductProps) => {
   const [src, setSrc] = useState<string>(images[0].url);
 
   return(
-    <div className="flex flex-col gap-4">
+    <div className="sticky top-40 flex flex-col gap-4">
       <div className="w-full h-[550px] flex items-center justify-center overflow-hidden rounded-md bg-zinc-200">
         <img src={src}/>
       </div>

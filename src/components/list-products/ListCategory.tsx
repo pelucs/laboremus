@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { useGetProductsQuery } from "../../graphql/generated";
-import { IProducts } from '../../types';
+
 import Loading from "../Loading";
 import ListProductsByCategory from "./ListProductsByCategory";
 
 interface CategoryProps{
   line: string;
-  filtered: string[];
-  handleFiltered: (newArray: Array<string>) => void;
 }
 
-export default ({ line, filtered, handleFiltered }: CategoryProps) => {
+export default ({ line }: CategoryProps) => {
 
   const { data } = useGetProductsQuery();
   const [products, setProducts] = useState<string[]>([]);
@@ -19,38 +17,22 @@ export default ({ line, filtered, handleFiltered }: CategoryProps) => {
     return <Loading/>
   }  
 
-  //CHECAR SE É LINHA AGRÍCOLA OU RESÍDUO
   useEffect(() => {
-    let formatLine = line === "linha-agricola" ? "linha agrícola" : "linha ecológica", //FORMATANDO LINHA
-        filteringProducts = data.products.filter(filter => filter.line === formatLine); //FILTRANDO PRODUTOS POR LINHA
-    
-    checkProductsByCategory(filteringProducts);
-  }, [line, filtered]);
-
-  //RESETAR A FILTRAGEM
-  useEffect(() => { handleFiltered([]) }, [line]);
-
-  const checkProductsByCategory = (filteringProducts: IProducts[]) => {
-    let category = filteringProducts.map(item => item.category),
-        newFiltering = category.filter((item, i) => category.indexOf(item) === i), //LISTAR OS PRODUTOS NA ORDEM CORRETA E ELIMINAR CATEGORIAS REPETIDAS   
-        orderProducts = [];
-      
-    if(filtered.length === 0){
-
-      //PONDO A COLHEITADEIRA NA PRIMEIRA POSIÇÃO
-      let subProduct = newFiltering.slice(0, newFiltering.length - 1);
-      
-      orderProducts.push(newFiltering[newFiltering.length - 1]);
-      
-      subProduct.forEach(name => {
-        orderProducts.push(name);
-      });
-
-      setProducts(orderProducts);
-    } else{
-      setProducts(filtered);
-    }
-  }
+    let formatLine = line === "linha-agricola" ? "linha agrícola" : "linha ecológica"; // Formatar linha
+    let filteringProducts = data.products.filter(filter => filter.line === formatLine); // Filtrar produtos por linha
+  
+    // Mover 'colheitadeira de palma' para o topo da lista
+    filteringProducts.sort((a, b) => {
+      if (a.category === "colheitadeira de palma") return -1;
+      if (b.category === "colheitadeira de palma") return 1;
+      return 0;
+    });
+  
+    // Extrair categorias únicas na ordem correta
+    let uniqueCategories = [...new Set(filteringProducts.map(item => item.category))];
+  
+    setProducts(uniqueCategories);
+  }, [line, data.products]);
 
   return(
     <div className="px-5 md:px-7">

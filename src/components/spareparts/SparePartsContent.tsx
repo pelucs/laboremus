@@ -2,7 +2,6 @@ import { MagnifyingGlass, WarningCircle } from "phosphor-react";
 import { useGetSparePartsQuery } from "../../graphql/generated";
 import { useEffect, useState } from "react";
 import { SparePartsType } from "../product-overview/ListSpareParts";
-import { useSearchParams } from "react-router-dom";
 
 export default () => {
 

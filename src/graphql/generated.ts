@@ -29,7 +29,7 @@ export type Aggregate = {
 };
 
 /** Asset system model */
-export type Asset = Node & {
+export type Asset = Entity & Node & {
   __typename?: 'Asset';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -39,6 +39,7 @@ export type Asset = Node & {
   documentInStages: Array<Asset>;
   /** The file name */
   fileName: Scalars['String'];
+  folderFolder: Array<Folder>;
   folderProduct: Array<Product>;
   /** The file handle */
   handle: Scalars['String'];
@@ -97,6 +98,20 @@ export type AssetDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
+};
+
+
+/** Asset system model */
+export type AssetFolderFolderArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<FolderOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FolderWhereInput>;
 };
 
 
@@ -263,6 +278,7 @@ export type AssetConnection = {
 export type AssetCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   fileName: Scalars['String'];
+  folderFolder?: InputMaybe<FolderCreateManyInlineInput>;
   folderProduct?: InputMaybe<ProductCreateManyInlineInput>;
   handle: Scalars['String'];
   height?: InputMaybe<Scalars['Float']>;
@@ -353,6 +369,9 @@ export type AssetManyWhereInput = {
   documentInStages_every?: InputMaybe<AssetWhereStageInput>;
   documentInStages_none?: InputMaybe<AssetWhereStageInput>;
   documentInStages_some?: InputMaybe<AssetWhereStageInput>;
+  folderFolder_every?: InputMaybe<FolderWhereInput>;
+  folderFolder_none?: InputMaybe<FolderWhereInput>;
+  folderFolder_some?: InputMaybe<FolderWhereInput>;
   folderProduct_every?: InputMaybe<ProductWhereInput>;
   folderProduct_none?: InputMaybe<ProductWhereInput>;
   folderProduct_some?: InputMaybe<ProductWhereInput>;
@@ -460,6 +479,7 @@ export type AssetTransformationInput = {
 
 export type AssetUpdateInput = {
   fileName?: InputMaybe<Scalars['String']>;
+  folderFolder?: InputMaybe<FolderUpdateManyInlineInput>;
   folderProduct?: InputMaybe<ProductUpdateManyInlineInput>;
   handle?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
@@ -647,6 +667,9 @@ export type AssetWhereInput = {
   fileName_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   fileName_starts_with?: InputMaybe<Scalars['String']>;
+  folderFolder_every?: InputMaybe<FolderWhereInput>;
+  folderFolder_none?: InputMaybe<FolderWhereInput>;
+  folderFolder_some?: InputMaybe<FolderWhereInput>;
   folderProduct_every?: InputMaybe<ProductWhereInput>;
   folderProduct_none?: InputMaybe<ProductWhereInput>;
   folderProduct_some?: InputMaybe<ProductWhereInput>;
@@ -854,7 +877,7 @@ export type ConnectPositionInput = {
   start?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type ConsultResale = Node & {
+export type ConsultResale = Entity & Node & {
   __typename?: 'ConsultResale';
   address: Scalars['String'];
   contact: Scalars['String'];
@@ -1524,7 +1547,46 @@ export type DocumentVersion = {
   stage: Stage;
 };
 
-export type FinalClient = Node & {
+/** An object with an ID */
+export type Entity = {
+  /** The id of the object. */
+  id: Scalars['ID'];
+  /** The Stage of an object */
+  stage: Stage;
+};
+
+/** This enumeration holds all typenames that implement the Entity interface. Components and models implement the Entity interface. */
+export enum EntityTypeName {
+  /** Asset system model */
+  Asset = 'Asset',
+  ConsultResale = 'ConsultResale',
+  FinalClient = 'FinalClient',
+  Folder = 'Folder',
+  Invitation = 'Invitation',
+  /** Produtos Laboremus */
+  Product = 'Product',
+  Production = 'Production',
+  /** Scheduled Operation system model */
+  ScheduledOperation = 'ScheduledOperation',
+  /** Scheduled Release system model */
+  ScheduledRelease = 'ScheduledRelease',
+  SparePart = 'SparePart',
+  Specification = 'Specification',
+  /** User system model */
+  User = 'User'
+}
+
+/** Allows to specify input to query models and components directly */
+export type EntityWhereInput = {
+  /** The ID of an object */
+  id: Scalars['ID'];
+  locale?: InputMaybe<Locale>;
+  stage: Stage;
+  /** The Type name of an object */
+  typename: EntityTypeName;
+};
+
+export type FinalClient = Entity & Node & {
   __typename?: 'FinalClient';
   address: Scalars['String'];
   contact: Scalars['String'];
@@ -2130,6 +2192,447 @@ export type FinalClientWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
+export type Folder = Entity & Node & {
+  __typename?: 'Folder';
+  category: Scalars['String'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Folder>;
+  folder?: Maybe<Asset>;
+  /** List of Folder versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type FolderCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type FolderDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type FolderFolderArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type FolderHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type FolderPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type FolderScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type FolderUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type FolderConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: FolderWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type FolderConnection = {
+  __typename?: 'FolderConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<FolderEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type FolderCreateInput = {
+  category: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  folder?: InputMaybe<AssetCreateOneInlineInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type FolderCreateManyInlineInput = {
+  /** Connect multiple existing Folder documents */
+  connect?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Create and connect multiple existing Folder documents */
+  create?: InputMaybe<Array<FolderCreateInput>>;
+};
+
+export type FolderCreateOneInlineInput = {
+  /** Connect one existing Folder document */
+  connect?: InputMaybe<FolderWhereUniqueInput>;
+  /** Create and connect one Folder document */
+  create?: InputMaybe<FolderCreateInput>;
+};
+
+/** An edge in a connection. */
+export type FolderEdge = {
+  __typename?: 'FolderEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Folder;
+};
+
+/** Identifies documents */
+export type FolderManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FolderWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  category_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  category_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  category_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  category_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  category_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  category_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  category_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  category_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  category_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_none?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_some?: InputMaybe<FolderWhereStageInput>;
+  folder?: InputMaybe<AssetWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum FolderOrderByInput {
+  CategoryAsc = 'category_ASC',
+  CategoryDesc = 'category_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type FolderUpdateInput = {
+  category?: InputMaybe<Scalars['String']>;
+  folder?: InputMaybe<AssetUpdateOneInlineInput>;
+};
+
+export type FolderUpdateManyInlineInput = {
+  /** Connect multiple existing Folder documents */
+  connect?: InputMaybe<Array<FolderConnectInput>>;
+  /** Create and connect multiple Folder documents */
+  create?: InputMaybe<Array<FolderCreateInput>>;
+  /** Delete multiple Folder documents */
+  delete?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Disconnect multiple Folder documents */
+  disconnect?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Folder documents */
+  set?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Update multiple Folder documents */
+  update?: InputMaybe<Array<FolderUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Folder documents */
+  upsert?: InputMaybe<Array<FolderUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type FolderUpdateManyInput = {
+  category?: InputMaybe<Scalars['String']>;
+};
+
+export type FolderUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: FolderUpdateManyInput;
+  /** Document search */
+  where: FolderWhereInput;
+};
+
+export type FolderUpdateOneInlineInput = {
+  /** Connect existing Folder document */
+  connect?: InputMaybe<FolderWhereUniqueInput>;
+  /** Create and connect one Folder document */
+  create?: InputMaybe<FolderCreateInput>;
+  /** Delete currently connected Folder document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Folder document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Folder document */
+  update?: InputMaybe<FolderUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Folder document */
+  upsert?: InputMaybe<FolderUpsertWithNestedWhereUniqueInput>;
+};
+
+export type FolderUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: FolderUpdateInput;
+  /** Unique document search */
+  where: FolderWhereUniqueInput;
+};
+
+export type FolderUpsertInput = {
+  /** Create document if it didn't exist */
+  create: FolderCreateInput;
+  /** Update document if it exists */
+  update: FolderUpdateInput;
+};
+
+export type FolderUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: FolderUpsertInput;
+  /** Unique document search */
+  where: FolderWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type FolderWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type FolderWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FolderWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  category_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  category_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  category_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  category_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  category_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  category_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  category_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  category_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  category_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_none?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_some?: InputMaybe<FolderWhereStageInput>;
+  folder?: InputMaybe<AssetWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type FolderWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FolderWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FolderWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FolderWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<FolderWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References Folder record uniquely */
+export type FolderWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export enum ImageFit {
   /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
   Clip = 'clip',
@@ -2156,7 +2659,7 @@ export type ImageTransformationInput = {
   resize?: InputMaybe<ImageResizeInput>;
 };
 
-export type Invitation = Node & {
+export type Invitation = Entity & Node & {
   __typename?: 'Invitation';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -2711,14 +3214,14 @@ export type Mutation = {
   createConsultResale?: Maybe<ConsultResale>;
   /** Create one finalClient */
   createFinalClient?: Maybe<FinalClient>;
+  /** Create one folder */
+  createFolder?: Maybe<Folder>;
   /** Create one invitation */
   createInvitation?: Maybe<Invitation>;
   /** Create one product */
   createProduct?: Maybe<Product>;
   /** Create one production */
   createProduction?: Maybe<Production>;
-  /** Create one resale */
-  createResale?: Maybe<Resale>;
   /** Create one scheduledRelease */
   createScheduledRelease?: Maybe<ScheduledRelease>;
   /** Create one sparePart */
@@ -2731,6 +3234,8 @@ export type Mutation = {
   deleteConsultResale?: Maybe<ConsultResale>;
   /** Delete one finalClient from _all_ existing stages. Returns deleted document. */
   deleteFinalClient?: Maybe<FinalClient>;
+  /** Delete one folder from _all_ existing stages. Returns deleted document. */
+  deleteFolder?: Maybe<Folder>;
   /** Delete one invitation from _all_ existing stages. Returns deleted document. */
   deleteInvitation?: Maybe<Invitation>;
   /**
@@ -2755,6 +3260,13 @@ export type Mutation = {
   /** Delete many FinalClient documents, return deleted documents */
   deleteManyFinalClientsConnection: FinalClientConnection;
   /**
+   * Delete many Folder documents
+   * @deprecated Please use the new paginated many mutation (deleteManyFoldersConnection)
+   */
+  deleteManyFolders: BatchPayload;
+  /** Delete many Folder documents, return deleted documents */
+  deleteManyFoldersConnection: FolderConnection;
+  /**
    * Delete many Invitation documents
    * @deprecated Please use the new paginated many mutation (deleteManyInvitationsConnection)
    */
@@ -2776,13 +3288,6 @@ export type Mutation = {
   /** Delete many Product documents, return deleted documents */
   deleteManyProductsConnection: ProductConnection;
   /**
-   * Delete many Resale documents
-   * @deprecated Please use the new paginated many mutation (deleteManyResalesConnection)
-   */
-  deleteManyResales: BatchPayload;
-  /** Delete many Resale documents, return deleted documents */
-  deleteManyResalesConnection: ResaleConnection;
-  /**
    * Delete many SparePart documents
    * @deprecated Please use the new paginated many mutation (deleteManySparePartsConnection)
    */
@@ -2800,8 +3305,6 @@ export type Mutation = {
   deleteProduct?: Maybe<Product>;
   /** Delete one production from _all_ existing stages. Returns deleted document. */
   deleteProduction?: Maybe<Production>;
-  /** Delete one resale from _all_ existing stages. Returns deleted document. */
-  deleteResale?: Maybe<Resale>;
   /** Delete and return scheduled operation */
   deleteScheduledOperation?: Maybe<ScheduledOperation>;
   /** Delete one scheduledRelease from _all_ existing stages. Returns deleted document. */
@@ -2816,6 +3319,8 @@ export type Mutation = {
   publishConsultResale?: Maybe<ConsultResale>;
   /** Publish one finalClient */
   publishFinalClient?: Maybe<FinalClient>;
+  /** Publish one folder */
+  publishFolder?: Maybe<Folder>;
   /** Publish one invitation */
   publishInvitation?: Maybe<Invitation>;
   /**
@@ -2840,6 +3345,13 @@ export type Mutation = {
   /** Publish many FinalClient documents */
   publishManyFinalClientsConnection: FinalClientConnection;
   /**
+   * Publish many Folder documents
+   * @deprecated Please use the new paginated many mutation (publishManyFoldersConnection)
+   */
+  publishManyFolders: BatchPayload;
+  /** Publish many Folder documents */
+  publishManyFoldersConnection: FolderConnection;
+  /**
    * Publish many Invitation documents
    * @deprecated Please use the new paginated many mutation (publishManyInvitationsConnection)
    */
@@ -2861,13 +3373,6 @@ export type Mutation = {
   /** Publish many Product documents */
   publishManyProductsConnection: ProductConnection;
   /**
-   * Publish many Resale documents
-   * @deprecated Please use the new paginated many mutation (publishManyResalesConnection)
-   */
-  publishManyResales: BatchPayload;
-  /** Publish many Resale documents */
-  publishManyResalesConnection: ResaleConnection;
-  /**
    * Publish many SparePart documents
    * @deprecated Please use the new paginated many mutation (publishManySparePartsConnection)
    */
@@ -2885,8 +3390,6 @@ export type Mutation = {
   publishProduct?: Maybe<Product>;
   /** Publish one production */
   publishProduction?: Maybe<Production>;
-  /** Publish one resale */
-  publishResale?: Maybe<Resale>;
   /** Publish one sparePart */
   publishSparePart?: Maybe<SparePart>;
   /** Publish one specification */
@@ -2897,14 +3400,14 @@ export type Mutation = {
   schedulePublishConsultResale?: Maybe<ConsultResale>;
   /** Schedule to publish one finalClient */
   schedulePublishFinalClient?: Maybe<FinalClient>;
+  /** Schedule to publish one folder */
+  schedulePublishFolder?: Maybe<Folder>;
   /** Schedule to publish one invitation */
   schedulePublishInvitation?: Maybe<Invitation>;
   /** Schedule to publish one product */
   schedulePublishProduct?: Maybe<Product>;
   /** Schedule to publish one production */
   schedulePublishProduction?: Maybe<Production>;
-  /** Schedule to publish one resale */
-  schedulePublishResale?: Maybe<Resale>;
   /** Schedule to publish one sparePart */
   schedulePublishSparePart?: Maybe<SparePart>;
   /** Schedule to publish one specification */
@@ -2915,14 +3418,14 @@ export type Mutation = {
   scheduleUnpublishConsultResale?: Maybe<ConsultResale>;
   /** Unpublish one finalClient from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishFinalClient?: Maybe<FinalClient>;
+  /** Unpublish one folder from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishFolder?: Maybe<Folder>;
   /** Unpublish one invitation from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishInvitation?: Maybe<Invitation>;
   /** Unpublish one product from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishProduct?: Maybe<Product>;
   /** Unpublish one production from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishProduction?: Maybe<Production>;
-  /** Unpublish one resale from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  scheduleUnpublishResale?: Maybe<Resale>;
   /** Unpublish one sparePart from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishSparePart?: Maybe<SparePart>;
   /** Unpublish one specification from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2933,6 +3436,8 @@ export type Mutation = {
   unpublishConsultResale?: Maybe<ConsultResale>;
   /** Unpublish one finalClient from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishFinalClient?: Maybe<FinalClient>;
+  /** Unpublish one folder from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishFolder?: Maybe<Folder>;
   /** Unpublish one invitation from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishInvitation?: Maybe<Invitation>;
   /**
@@ -2957,6 +3462,13 @@ export type Mutation = {
   /** Find many FinalClient documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyFinalClientsConnection: FinalClientConnection;
   /**
+   * Unpublish many Folder documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyFoldersConnection)
+   */
+  unpublishManyFolders: BatchPayload;
+  /** Find many Folder documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyFoldersConnection: FolderConnection;
+  /**
    * Unpublish many Invitation documents
    * @deprecated Please use the new paginated many mutation (unpublishManyInvitationsConnection)
    */
@@ -2978,13 +3490,6 @@ export type Mutation = {
   /** Find many Product documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyProductsConnection: ProductConnection;
   /**
-   * Unpublish many Resale documents
-   * @deprecated Please use the new paginated many mutation (unpublishManyResalesConnection)
-   */
-  unpublishManyResales: BatchPayload;
-  /** Find many Resale documents that match criteria in specified stage and unpublish from target stages */
-  unpublishManyResalesConnection: ResaleConnection;
-  /**
    * Unpublish many SparePart documents
    * @deprecated Please use the new paginated many mutation (unpublishManySparePartsConnection)
    */
@@ -3002,8 +3507,6 @@ export type Mutation = {
   unpublishProduct?: Maybe<Product>;
   /** Unpublish one production from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishProduction?: Maybe<Production>;
-  /** Unpublish one resale from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  unpublishResale?: Maybe<Resale>;
   /** Unpublish one sparePart from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishSparePart?: Maybe<SparePart>;
   /** Unpublish one specification from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3014,6 +3517,8 @@ export type Mutation = {
   updateConsultResale?: Maybe<ConsultResale>;
   /** Update one finalClient */
   updateFinalClient?: Maybe<FinalClient>;
+  /** Update one folder */
+  updateFolder?: Maybe<Folder>;
   /** Update one invitation */
   updateInvitation?: Maybe<Invitation>;
   /**
@@ -3038,6 +3543,13 @@ export type Mutation = {
   /** Update many FinalClient documents */
   updateManyFinalClientsConnection: FinalClientConnection;
   /**
+   * Update many folders
+   * @deprecated Please use the new paginated many mutation (updateManyFoldersConnection)
+   */
+  updateManyFolders: BatchPayload;
+  /** Update many Folder documents */
+  updateManyFoldersConnection: FolderConnection;
+  /**
    * Update many invitations
    * @deprecated Please use the new paginated many mutation (updateManyInvitationsConnection)
    */
@@ -3059,13 +3571,6 @@ export type Mutation = {
   /** Update many Product documents */
   updateManyProductsConnection: ProductConnection;
   /**
-   * Update many resales
-   * @deprecated Please use the new paginated many mutation (updateManyResalesConnection)
-   */
-  updateManyResales: BatchPayload;
-  /** Update many Resale documents */
-  updateManyResalesConnection: ResaleConnection;
-  /**
    * Update many spareParts
    * @deprecated Please use the new paginated many mutation (updateManySparePartsConnection)
    */
@@ -3083,8 +3588,6 @@ export type Mutation = {
   updateProduct?: Maybe<Product>;
   /** Update one production */
   updateProduction?: Maybe<Production>;
-  /** Update one resale */
-  updateResale?: Maybe<Resale>;
   /** Update one scheduledRelease */
   updateScheduledRelease?: Maybe<ScheduledRelease>;
   /** Update one sparePart */
@@ -3097,14 +3600,14 @@ export type Mutation = {
   upsertConsultResale?: Maybe<ConsultResale>;
   /** Upsert one finalClient */
   upsertFinalClient?: Maybe<FinalClient>;
+  /** Upsert one folder */
+  upsertFolder?: Maybe<Folder>;
   /** Upsert one invitation */
   upsertInvitation?: Maybe<Invitation>;
   /** Upsert one product */
   upsertProduct?: Maybe<Product>;
   /** Upsert one production */
   upsertProduction?: Maybe<Production>;
-  /** Upsert one resale */
-  upsertResale?: Maybe<Resale>;
   /** Upsert one sparePart */
   upsertSparePart?: Maybe<SparePart>;
   /** Upsert one specification */
@@ -3127,6 +3630,11 @@ export type MutationCreateFinalClientArgs = {
 };
 
 
+export type MutationCreateFolderArgs = {
+  data: FolderCreateInput;
+};
+
+
 export type MutationCreateInvitationArgs = {
   data: InvitationCreateInput;
 };
@@ -3139,11 +3647,6 @@ export type MutationCreateProductArgs = {
 
 export type MutationCreateProductionArgs = {
   data: ProductionCreateInput;
-};
-
-
-export type MutationCreateResaleArgs = {
-  data: ResaleCreateInput;
 };
 
 
@@ -3174,6 +3677,11 @@ export type MutationDeleteConsultResaleArgs = {
 
 export type MutationDeleteFinalClientArgs = {
   where: FinalClientWhereUniqueInput;
+};
+
+
+export type MutationDeleteFolderArgs = {
+  where: FolderWhereUniqueInput;
 };
 
 
@@ -3227,6 +3735,21 @@ export type MutationDeleteManyFinalClientsConnectionArgs = {
 };
 
 
+export type MutationDeleteManyFoldersArgs = {
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationDeleteManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationDeleteManyInvitationsArgs = {
   where?: InputMaybe<InvitationManyWhereInput>;
 };
@@ -3272,21 +3795,6 @@ export type MutationDeleteManyProductsConnectionArgs = {
 };
 
 
-export type MutationDeleteManyResalesArgs = {
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
-export type MutationDeleteManyResalesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
 export type MutationDeleteManySparePartsArgs = {
   where?: InputMaybe<SparePartManyWhereInput>;
 };
@@ -3324,11 +3832,6 @@ export type MutationDeleteProductArgs = {
 
 export type MutationDeleteProductionArgs = {
   where: ProductionWhereUniqueInput;
-};
-
-
-export type MutationDeleteResaleArgs = {
-  where: ResaleWhereUniqueInput;
 };
 
 
@@ -3370,6 +3873,12 @@ export type MutationPublishConsultResaleArgs = {
 export type MutationPublishFinalClientArgs = {
   to?: Array<Stage>;
   where: FinalClientWhereUniqueInput;
+};
+
+
+export type MutationPublishFolderArgs = {
+  to?: Array<Stage>;
+  where: FolderWhereUniqueInput;
 };
 
 
@@ -3439,6 +3948,24 @@ export type MutationPublishManyFinalClientsConnectionArgs = {
 };
 
 
+export type MutationPublishManyFoldersArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationPublishManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationPublishManyInvitationsArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<InvitationManyWhereInput>;
@@ -3493,24 +4020,6 @@ export type MutationPublishManyProductsConnectionArgs = {
 };
 
 
-export type MutationPublishManyResalesArgs = {
-  to?: Array<Stage>;
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
-export type MutationPublishManyResalesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  from?: InputMaybe<Stage>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  to?: Array<Stage>;
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
 export type MutationPublishManySparePartsArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<SparePartManyWhereInput>;
@@ -3559,12 +4068,6 @@ export type MutationPublishProductionArgs = {
 };
 
 
-export type MutationPublishResaleArgs = {
-  to?: Array<Stage>;
-  where: ResaleWhereUniqueInput;
-};
-
-
 export type MutationPublishSparePartArgs = {
   to?: Array<Stage>;
   where: SparePartWhereUniqueInput;
@@ -3604,6 +4107,14 @@ export type MutationSchedulePublishFinalClientArgs = {
 };
 
 
+export type MutationSchedulePublishFolderArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: FolderWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishInvitationArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -3625,14 +4136,6 @@ export type MutationSchedulePublishProductionArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: ProductionWhereUniqueInput;
-};
-
-
-export type MutationSchedulePublishResaleArgs = {
-  releaseAt?: InputMaybe<Scalars['DateTime']>;
-  releaseId?: InputMaybe<Scalars['String']>;
-  to?: Array<Stage>;
-  where: ResaleWhereUniqueInput;
 };
 
 
@@ -3678,6 +4181,14 @@ export type MutationScheduleUnpublishFinalClientArgs = {
 };
 
 
+export type MutationScheduleUnpublishFolderArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: FolderWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishInvitationArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
@@ -3699,14 +4210,6 @@ export type MutationScheduleUnpublishProductionArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: ProductionWhereUniqueInput;
-};
-
-
-export type MutationScheduleUnpublishResaleArgs = {
-  from?: Array<Stage>;
-  releaseAt?: InputMaybe<Scalars['DateTime']>;
-  releaseId?: InputMaybe<Scalars['String']>;
-  where: ResaleWhereUniqueInput;
 };
 
 
@@ -3743,6 +4246,12 @@ export type MutationUnpublishConsultResaleArgs = {
 export type MutationUnpublishFinalClientArgs = {
   from?: Array<Stage>;
   where: FinalClientWhereUniqueInput;
+};
+
+
+export type MutationUnpublishFolderArgs = {
+  from?: Array<Stage>;
+  where: FolderWhereUniqueInput;
 };
 
 
@@ -3810,6 +4319,24 @@ export type MutationUnpublishManyFinalClientsConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyFoldersArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyInvitationsArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<InvitationManyWhereInput>;
@@ -3864,24 +4391,6 @@ export type MutationUnpublishManyProductsConnectionArgs = {
 };
 
 
-export type MutationUnpublishManyResalesArgs = {
-  from?: Array<Stage>;
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
-export type MutationUnpublishManyResalesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  from?: Array<Stage>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: InputMaybe<Stage>;
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
 export type MutationUnpublishManySparePartsArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<SparePartManyWhereInput>;
@@ -3930,12 +4439,6 @@ export type MutationUnpublishProductionArgs = {
 };
 
 
-export type MutationUnpublishResaleArgs = {
-  from?: Array<Stage>;
-  where: ResaleWhereUniqueInput;
-};
-
-
 export type MutationUnpublishSparePartArgs = {
   from?: Array<Stage>;
   where: SparePartWhereUniqueInput;
@@ -3963,6 +4466,12 @@ export type MutationUpdateConsultResaleArgs = {
 export type MutationUpdateFinalClientArgs = {
   data: FinalClientUpdateInput;
   where: FinalClientWhereUniqueInput;
+};
+
+
+export type MutationUpdateFolderArgs = {
+  data: FolderUpdateInput;
+  where: FolderWhereUniqueInput;
 };
 
 
@@ -4023,6 +4532,23 @@ export type MutationUpdateManyFinalClientsConnectionArgs = {
 };
 
 
+export type MutationUpdateManyFoldersArgs = {
+  data: FolderUpdateManyInput;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationUpdateManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: FolderUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationUpdateManyInvitationsArgs = {
   data: InvitationUpdateManyInput;
   where?: InputMaybe<InvitationManyWhereInput>;
@@ -4074,23 +4600,6 @@ export type MutationUpdateManyProductsConnectionArgs = {
 };
 
 
-export type MutationUpdateManyResalesArgs = {
-  data: ResaleUpdateManyInput;
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
-export type MutationUpdateManyResalesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  data: ResaleUpdateManyInput;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ResaleManyWhereInput>;
-};
-
-
 export type MutationUpdateManySparePartsArgs = {
   data: SparePartUpdateManyInput;
   where?: InputMaybe<SparePartManyWhereInput>;
@@ -4137,12 +4646,6 @@ export type MutationUpdateProductionArgs = {
 };
 
 
-export type MutationUpdateResaleArgs = {
-  data: ResaleUpdateInput;
-  where: ResaleWhereUniqueInput;
-};
-
-
 export type MutationUpdateScheduledReleaseArgs = {
   data: ScheduledReleaseUpdateInput;
   where: ScheduledReleaseWhereUniqueInput;
@@ -4179,6 +4682,12 @@ export type MutationUpsertFinalClientArgs = {
 };
 
 
+export type MutationUpsertFolderArgs = {
+  upsert: FolderUpsertInput;
+  where: FolderWhereUniqueInput;
+};
+
+
 export type MutationUpsertInvitationArgs = {
   upsert: InvitationUpsertInput;
   where: InvitationWhereUniqueInput;
@@ -4194,12 +4703,6 @@ export type MutationUpsertProductArgs = {
 export type MutationUpsertProductionArgs = {
   upsert: ProductionUpsertInput;
   where: ProductionWhereUniqueInput;
-};
-
-
-export type MutationUpsertResaleArgs = {
-  upsert: ResaleUpsertInput;
-  where: ResaleWhereUniqueInput;
 };
 
 
@@ -4238,7 +4741,7 @@ export type PageInfo = {
 };
 
 /** Produtos Laboremus */
-export type Product = Node & {
+export type Product = Entity & Node & {
   __typename?: 'Product';
   category: Scalars['String'];
   categoryEn?: Maybe<Scalars['String']>;
@@ -4247,6 +4750,7 @@ export type Product = Node & {
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
+  desc?: Maybe<ProductDescRichText>;
   description: Scalars['String'];
   descriptionEn?: Maybe<Scalars['String']>;
   descriptionEs?: Maybe<Scalars['String']>;
@@ -4392,6 +4896,7 @@ export type ProductCreateInput = {
   categoryEn?: InputMaybe<Scalars['String']>;
   categoryEs?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  desc?: InputMaybe<Scalars['RichTextAST']>;
   description: Scalars['String'];
   descriptionEn?: InputMaybe<Scalars['String']>;
   descriptionEs?: InputMaybe<Scalars['String']>;
@@ -4420,6 +4925,31 @@ export type ProductCreateOneInlineInput = {
   /** Create and connect one Product document */
   create?: InputMaybe<ProductCreateInput>;
 };
+
+export type ProductDescRichText = {
+  __typename?: 'ProductDescRichText';
+  /** Returns HTMl representation */
+  html: Scalars['String'];
+  json: Scalars['RichTextAST'];
+  /** Returns Markdown representation */
+  markdown: Scalars['String'];
+  /** @deprecated Please use the 'json' field */
+  raw: Scalars['RichTextAST'];
+  references: Array<ProductDescRichTextEmbeddedTypes>;
+  /** Returns plain-text contents of RichText */
+  text: Scalars['String'];
+};
+
+
+export type ProductDescRichTextReferencesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export type ProductDescRichTextEmbeddedTypes = Product;
 
 /** An edge in a connection. */
 export type ProductEdge = {
@@ -4769,6 +5299,7 @@ export type ProductUpdateInput = {
   category?: InputMaybe<Scalars['String']>;
   categoryEn?: InputMaybe<Scalars['String']>;
   categoryEs?: InputMaybe<Scalars['String']>;
+  desc?: InputMaybe<Scalars['RichTextAST']>;
   description?: InputMaybe<Scalars['String']>;
   descriptionEn?: InputMaybe<Scalars['String']>;
   descriptionEs?: InputMaybe<Scalars['String']>;
@@ -4804,6 +5335,7 @@ export type ProductUpdateManyInput = {
   category?: InputMaybe<Scalars['String']>;
   categoryEn?: InputMaybe<Scalars['String']>;
   categoryEs?: InputMaybe<Scalars['String']>;
+  desc?: InputMaybe<Scalars['RichTextAST']>;
   description?: InputMaybe<Scalars['String']>;
   descriptionEn?: InputMaybe<Scalars['String']>;
   descriptionEs?: InputMaybe<Scalars['String']>;
@@ -5184,7 +5716,7 @@ export type ProductWhereUniqueInput = {
   slug?: InputMaybe<Scalars['String']>;
 };
 
-export type Production = Node & {
+export type Production = Entity & Node & {
   __typename?: 'Production';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -5795,6 +6327,8 @@ export type Query = {
   consultResales: Array<ConsultResale>;
   /** Retrieve multiple consultResales using the Relay connection interface */
   consultResalesConnection: ConsultResaleConnection;
+  /** Fetches an object given its ID */
+  entities?: Maybe<Array<Entity>>;
   /** Retrieve a single finalClient */
   finalClient?: Maybe<FinalClient>;
   /** Retrieve document version */
@@ -5803,6 +6337,14 @@ export type Query = {
   finalClients: Array<FinalClient>;
   /** Retrieve multiple finalClients using the Relay connection interface */
   finalClientsConnection: FinalClientConnection;
+  /** Retrieve a single folder */
+  folder?: Maybe<Folder>;
+  /** Retrieve document version */
+  folderVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple folders */
+  folders: Array<Folder>;
+  /** Retrieve multiple folders using the Relay connection interface */
+  foldersConnection: FolderConnection;
   /** Retrieve a single invitation */
   invitation?: Maybe<Invitation>;
   /** Retrieve document version */
@@ -5829,14 +6371,6 @@ export type Query = {
   products: Array<Product>;
   /** Retrieve multiple products using the Relay connection interface */
   productsConnection: ProductConnection;
-  /** Retrieve a single resale */
-  resale?: Maybe<Resale>;
-  /** Retrieve document version */
-  resaleVersion?: Maybe<DocumentVersion>;
-  /** Retrieve multiple resales */
-  resales: Array<Resale>;
-  /** Retrieve multiple resales using the Relay connection interface */
-  resalesConnection: ResaleConnection;
   /** Retrieve a single scheduledOperation */
   scheduledOperation?: Maybe<ScheduledOperation>;
   /** Retrieve multiple scheduledOperations */
@@ -5950,6 +6484,12 @@ export type QueryConsultResalesConnectionArgs = {
 };
 
 
+export type QueryEntitiesArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  where: Array<EntityWhereInput>;
+};
+
+
 export type QueryFinalClientArgs = {
   locales?: Array<Locale>;
   stage?: Stage;
@@ -5985,6 +6525,44 @@ export type QueryFinalClientsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<FinalClientWhereInput>;
+};
+
+
+export type QueryFolderArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: FolderWhereUniqueInput;
+};
+
+
+export type QueryFolderVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryFoldersArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<FolderOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<FolderWhereInput>;
+};
+
+
+export type QueryFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<FolderOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<FolderWhereInput>;
 };
 
 
@@ -6106,44 +6684,6 @@ export type QueryProductsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<ProductWhereInput>;
-};
-
-
-export type QueryResaleArgs = {
-  locales?: Array<Locale>;
-  stage?: Stage;
-  where: ResaleWhereUniqueInput;
-};
-
-
-export type QueryResaleVersionArgs = {
-  where: VersionWhereInput;
-};
-
-
-export type QueryResalesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: InputMaybe<ResaleOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: InputMaybe<ResaleWhereInput>;
-};
-
-
-export type QueryResalesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: InputMaybe<ResaleOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: InputMaybe<ResaleWhereInput>;
 };
 
 
@@ -6338,726 +6878,6 @@ export type RgbaInput = {
   r: Scalars['RGBAHue'];
 };
 
-export type Resale = Node & {
-  __typename?: 'Resale';
-  address: Scalars['String'];
-  city: Scalars['String'];
-  /** The time the document was created */
-  createdAt: Scalars['DateTime'];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  district: Scalars['String'];
-  /** Get the document in other stages */
-  documentInStages: Array<Resale>;
-  email: Scalars['String'];
-  /** List of Resale versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  name: Scalars['String'];
-  number: Scalars['String'];
-  phone: Array<Scalars['String']>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  uf: Scalars['String'];
-  /** The time the document was updated */
-  updatedAt: Scalars['DateTime'];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
-
-
-export type ResaleCreatedByArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ResaleDocumentInStagesArgs = {
-  includeCurrent?: Scalars['Boolean'];
-  inheritLocale?: Scalars['Boolean'];
-  stages?: Array<Stage>;
-};
-
-
-export type ResaleHistoryArgs = {
-  limit?: Scalars['Int'];
-  skip?: Scalars['Int'];
-  stageOverride?: InputMaybe<Stage>;
-};
-
-
-export type ResalePublishedByArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ResaleScheduledInArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ScheduledOperationWhereInput>;
-};
-
-
-export type ResaleUpdatedByArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-export type ResaleConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: ResaleWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type ResaleConnection = {
-  __typename?: 'ResaleConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<ResaleEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type ResaleCreateInput = {
-  address: Scalars['String'];
-  city: Scalars['String'];
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  district: Scalars['String'];
-  email: Scalars['String'];
-  name: Scalars['String'];
-  number: Scalars['String'];
-  phone: Array<Scalars['String']>;
-  uf: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type ResaleCreateManyInlineInput = {
-  /** Connect multiple existing Resale documents */
-  connect?: InputMaybe<Array<ResaleWhereUniqueInput>>;
-  /** Create and connect multiple existing Resale documents */
-  create?: InputMaybe<Array<ResaleCreateInput>>;
-};
-
-export type ResaleCreateOneInlineInput = {
-  /** Connect one existing Resale document */
-  connect?: InputMaybe<ResaleWhereUniqueInput>;
-  /** Create and connect one Resale document */
-  create?: InputMaybe<ResaleCreateInput>;
-};
-
-/** An edge in a connection. */
-export type ResaleEdge = {
-  __typename?: 'ResaleEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: Resale;
-};
-
-/** Identifies documents */
-export type ResaleManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ResaleWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ResaleWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ResaleWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  address?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  address_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  address_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  address_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  address_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  address_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  address_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  address_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  address_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  address_starts_with?: InputMaybe<Scalars['String']>;
-  city?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  city_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  city_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  city_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  city_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  city_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  city_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  city_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  city_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  city_starts_with?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  district?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  district_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  district_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  district_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  district_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  district_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  district_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  district_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  district_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  district_starts_with?: InputMaybe<Scalars['String']>;
-  documentInStages_every?: InputMaybe<ResaleWhereStageInput>;
-  documentInStages_none?: InputMaybe<ResaleWhereStageInput>;
-  documentInStages_some?: InputMaybe<ResaleWhereStageInput>;
-  email?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  email_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  email_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  email_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  email_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  email_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  email_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  email_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
-  number?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  number_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  number_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  number_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  number_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  number_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  number_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  number_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  number_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  number_starts_with?: InputMaybe<Scalars['String']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  phone?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  phone_contains_all?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  phone_contains_none?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  phone_contains_some?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  phone_not?: InputMaybe<Array<Scalars['String']>>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  uf?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  uf_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  uf_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  uf_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  uf_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  uf_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  uf_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  uf_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  uf_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  uf_starts_with?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
-};
-
-export enum ResaleOrderByInput {
-  AddressAsc = 'address_ASC',
-  AddressDesc = 'address_DESC',
-  CityAsc = 'city_ASC',
-  CityDesc = 'city_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  DistrictAsc = 'district_ASC',
-  DistrictDesc = 'district_DESC',
-  EmailAsc = 'email_ASC',
-  EmailDesc = 'email_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  NumberAsc = 'number_ASC',
-  NumberDesc = 'number_DESC',
-  PhoneAsc = 'phone_ASC',
-  PhoneDesc = 'phone_DESC',
-  PublishedAtAsc = 'publishedAt_ASC',
-  PublishedAtDesc = 'publishedAt_DESC',
-  UfAsc = 'uf_ASC',
-  UfDesc = 'uf_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC'
-}
-
-export type ResaleUpdateInput = {
-  address?: InputMaybe<Scalars['String']>;
-  city?: InputMaybe<Scalars['String']>;
-  district?: InputMaybe<Scalars['String']>;
-  email?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  number?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Array<Scalars['String']>>;
-  uf?: InputMaybe<Scalars['String']>;
-};
-
-export type ResaleUpdateManyInlineInput = {
-  /** Connect multiple existing Resale documents */
-  connect?: InputMaybe<Array<ResaleConnectInput>>;
-  /** Create and connect multiple Resale documents */
-  create?: InputMaybe<Array<ResaleCreateInput>>;
-  /** Delete multiple Resale documents */
-  delete?: InputMaybe<Array<ResaleWhereUniqueInput>>;
-  /** Disconnect multiple Resale documents */
-  disconnect?: InputMaybe<Array<ResaleWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing Resale documents */
-  set?: InputMaybe<Array<ResaleWhereUniqueInput>>;
-  /** Update multiple Resale documents */
-  update?: InputMaybe<Array<ResaleUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple Resale documents */
-  upsert?: InputMaybe<Array<ResaleUpsertWithNestedWhereUniqueInput>>;
-};
-
-export type ResaleUpdateManyInput = {
-  address?: InputMaybe<Scalars['String']>;
-  city?: InputMaybe<Scalars['String']>;
-  district?: InputMaybe<Scalars['String']>;
-  email?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  number?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Array<Scalars['String']>>;
-  uf?: InputMaybe<Scalars['String']>;
-};
-
-export type ResaleUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: ResaleUpdateManyInput;
-  /** Document search */
-  where: ResaleWhereInput;
-};
-
-export type ResaleUpdateOneInlineInput = {
-  /** Connect existing Resale document */
-  connect?: InputMaybe<ResaleWhereUniqueInput>;
-  /** Create and connect one Resale document */
-  create?: InputMaybe<ResaleCreateInput>;
-  /** Delete currently connected Resale document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected Resale document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
-  /** Update single Resale document */
-  update?: InputMaybe<ResaleUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single Resale document */
-  upsert?: InputMaybe<ResaleUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ResaleUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: ResaleUpdateInput;
-  /** Unique document search */
-  where: ResaleWhereUniqueInput;
-};
-
-export type ResaleUpsertInput = {
-  /** Create document if it didn't exist */
-  create: ResaleCreateInput;
-  /** Update document if it exists */
-  update: ResaleUpdateInput;
-};
-
-export type ResaleUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: ResaleUpsertInput;
-  /** Unique document search */
-  where: ResaleWhereUniqueInput;
-};
-
-/** This contains a set of filters that can be used to compare values internally */
-export type ResaleWhereComparatorInput = {
-  /** This field can be used to request to check if the entry is outdated by internal comparison */
-  outdated_to?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Identifies documents */
-export type ResaleWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ResaleWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ResaleWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ResaleWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  address?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  address_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  address_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  address_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  address_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  address_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  address_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  address_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  address_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  address_starts_with?: InputMaybe<Scalars['String']>;
-  city?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  city_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  city_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  city_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  city_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  city_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  city_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  city_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  city_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  city_starts_with?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  district?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  district_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  district_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  district_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  district_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  district_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  district_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  district_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  district_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  district_starts_with?: InputMaybe<Scalars['String']>;
-  documentInStages_every?: InputMaybe<ResaleWhereStageInput>;
-  documentInStages_none?: InputMaybe<ResaleWhereStageInput>;
-  documentInStages_some?: InputMaybe<ResaleWhereStageInput>;
-  email?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  email_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  email_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  email_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  email_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  email_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  email_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  email_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
-  number?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  number_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  number_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  number_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  number_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  number_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  number_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  number_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  number_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  number_starts_with?: InputMaybe<Scalars['String']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  phone?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  phone_contains_all?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  phone_contains_none?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  phone_contains_some?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  phone_not?: InputMaybe<Array<Scalars['String']>>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  uf?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  uf_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  uf_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  uf_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  uf_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  uf_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  uf_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  uf_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  uf_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  uf_starts_with?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
-};
-
-/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
-export type ResaleWhereStageInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ResaleWhereStageInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ResaleWhereStageInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ResaleWhereStageInput>>;
-  /** This field contains fields which can be set as true or false to specify an internal comparison */
-  compareWithParent?: InputMaybe<ResaleWhereComparatorInput>;
-  /** Specify the stage to compare with */
-  stage?: InputMaybe<Stage>;
-};
-
-/** References Resale record uniquely */
-export type ResaleWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
 /** Custom type representing a rich text value comprising of raw rich text ast, html, markdown and text values */
 export type RichText = {
   __typename?: 'RichText';
@@ -7072,7 +6892,7 @@ export type RichText = {
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperation = Node & {
+export type ScheduledOperation = Entity & Node & {
   __typename?: 'ScheduledOperation';
   affectedDocuments: Array<ScheduledOperationAffectedDocument>;
   /** The time the document was created */
@@ -7153,7 +6973,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | ConsultResale | FinalClient | Invitation | Product | Production | Resale | SparePart | Specification;
+export type ScheduledOperationAffectedDocument = Asset | ConsultResale | FinalClient | Folder | Invitation | Product | Production | SparePart | Specification;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -7507,7 +7327,7 @@ export type ScheduledOperationWhereUniqueInput = {
 };
 
 /** Scheduled Release system model */
-export type ScheduledRelease = Node & {
+export type ScheduledRelease = Entity & Node & {
   __typename?: 'ScheduledRelease';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -8086,7 +7906,7 @@ export type ScheduledReleaseWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type SparePart = Node & {
+export type SparePart = Entity & Node & {
   __typename?: 'SparePart';
   application: Array<Scalars['String']>;
   /** The time the document was created */
@@ -8100,9 +7920,7 @@ export type SparePart = Node & {
   /** The unique identifier */
   id: Scalars['ID'];
   image?: Maybe<Asset>;
-  machine: Scalars['String'];
   name: Scalars['String'];
-  parts: Array<Scalars['String']>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -8189,9 +8007,7 @@ export type SparePartCreateInput = {
   application: Array<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
-  machine: Scalars['String'];
   name: Scalars['String'];
-  parts: Array<Scalars['String']>;
   reference?: InputMaybe<Scalars['String']>;
   state: State;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -8279,25 +8095,6 @@ export type SparePartManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<AssetWhereInput>;
-  machine?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  machine_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  machine_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  machine_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  machine_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  machine_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  machine_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  machine_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  machine_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  machine_starts_with?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   name_contains?: InputMaybe<Scalars['String']>;
@@ -8317,16 +8114,6 @@ export type SparePartManyWhereInput = {
   name_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with?: InputMaybe<Scalars['String']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  parts?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  parts_contains_all?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  parts_contains_none?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  parts_contains_some?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  parts_not?: InputMaybe<Array<Scalars['String']>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -8397,12 +8184,8 @@ export enum SparePartOrderByInput {
   CreatedAtDesc = 'createdAt_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
-  MachineAsc = 'machine_ASC',
-  MachineDesc = 'machine_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
-  PartsAsc = 'parts_ASC',
-  PartsDesc = 'parts_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
   ReferenceAsc = 'reference_ASC',
@@ -8416,9 +8199,7 @@ export enum SparePartOrderByInput {
 export type SparePartUpdateInput = {
   application?: InputMaybe<Array<Scalars['String']>>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
-  machine?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  parts?: InputMaybe<Array<Scalars['String']>>;
   reference?: InputMaybe<Scalars['String']>;
   state?: InputMaybe<State>;
 };
@@ -8442,9 +8223,7 @@ export type SparePartUpdateManyInlineInput = {
 
 export type SparePartUpdateManyInput = {
   application?: InputMaybe<Array<Scalars['String']>>;
-  machine?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  parts?: InputMaybe<Array<Scalars['String']>>;
   reference?: InputMaybe<Scalars['String']>;
   state?: InputMaybe<State>;
 };
@@ -8557,25 +8336,6 @@ export type SparePartWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<AssetWhereInput>;
-  machine?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  machine_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  machine_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  machine_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  machine_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  machine_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  machine_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  machine_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  machine_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  machine_starts_with?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   name_contains?: InputMaybe<Scalars['String']>;
@@ -8595,16 +8355,6 @@ export type SparePartWhereInput = {
   name_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   name_starts_with?: InputMaybe<Scalars['String']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  parts?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  parts_contains_all?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  parts_contains_none?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  parts_contains_some?: InputMaybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  parts_not?: InputMaybe<Array<Scalars['String']>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -8687,7 +8437,7 @@ export type SparePartWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type Specification = Node & {
+export type Specification = Entity & Node & {
   __typename?: 'Specification';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -9311,7 +9061,7 @@ export type UnpublishLocaleInput = {
 };
 
 /** User system model */
-export type User = Node & {
+export type User = Entity & Node & {
   __typename?: 'User';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -9823,12 +9573,17 @@ export type CreateConsultResaleMutationVariables = Exact<{
 
 export type CreateConsultResaleMutation = { __typename?: 'Mutation', createConsultResale?: { __typename?: 'ConsultResale', name: string, email: string, contact: string, address: string, message: string } | null };
 
+export type GetFoldersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetFoldersQuery = { __typename?: 'Query', folders: Array<{ __typename?: 'Folder', category: string, folder?: { __typename?: 'Asset', url: string } | null }> };
+
 export type GetProductBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type GetProductBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string, slug: string, line: string, id: string, ncm?: string | null, category: string, categoryEn?: string | null, categoryEs?: string | null, description: string, descriptionEn?: string | null, descriptionEs?: string | null, videoId: string, sticker?: { __typename?: 'Asset', url: string } | null, manual?: { __typename?: 'Asset', url: string } | null, image: Array<{ __typename?: 'Asset', url: string }>, folder: Array<{ __typename?: 'Asset', url: string }> } | null };
+export type GetProductBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string, slug: string, line: string, id: string, ncm?: string | null, category: string, categoryEn?: string | null, categoryEs?: string | null, description: string, descriptionEn?: string | null, descriptionEs?: string | null, videoId: string, desc?: { __typename?: 'ProductDescRichText', html: string } | null, sticker?: { __typename?: 'Asset', url: string } | null, manual?: { __typename?: 'Asset', url: string } | null, image: Array<{ __typename?: 'Asset', url: string }>, folder: Array<{ __typename?: 'Asset', url: string }> } | null };
 
 export type GetProductionBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
@@ -9847,7 +9602,14 @@ export type GetProductsByCategoryQuery = { __typename?: 'Query', products: Array
 export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', name: string, slug: string, line: string, id: string, ncm?: string | null, category: string, categoryEn?: string | null, categoryEs?: string | null, description: string, descriptionEn?: string | null, descriptionEs?: string | null, videoId: string, sticker?: { __typename?: 'Asset', url: string } | null, manual?: { __typename?: 'Asset', url: string } | null, image: Array<{ __typename?: 'Asset', url: string }>, folder: Array<{ __typename?: 'Asset', url: string }> }> };
+export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', name: string, slug: string, line: string, id: string, ncm?: string | null, category: string, categoryEn?: string | null, categoryEs?: string | null, description: string, descriptionEn?: string | null, descriptionEs?: string | null, videoId: string, desc?: { __typename?: 'ProductDescRichText', html: string } | null, sticker?: { __typename?: 'Asset', url: string } | null, manual?: { __typename?: 'Asset', url: string } | null, image: Array<{ __typename?: 'Asset', url: string }>, folder: Array<{ __typename?: 'Asset', url: string }> }> };
+
+export type GetSparePartsByMachineQueryVariables = Exact<{
+  name?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetSparePartsByMachineQuery = { __typename?: 'Query', spareParts: Array<{ __typename?: 'SparePart', name: string, reference?: string | null, state: State, image?: { __typename?: 'Asset', url: string } | null }> };
 
 export type GetSparePartsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -9948,6 +9710,43 @@ export function useCreateConsultResaleMutation(baseOptions?: Apollo.MutationHook
 export type CreateConsultResaleMutationHookResult = ReturnType<typeof useCreateConsultResaleMutation>;
 export type CreateConsultResaleMutationResult = Apollo.MutationResult<CreateConsultResaleMutation>;
 export type CreateConsultResaleMutationOptions = Apollo.BaseMutationOptions<CreateConsultResaleMutation, CreateConsultResaleMutationVariables>;
+export const GetFoldersDocument = gql`
+    query GetFolders {
+  folders(stage: PUBLISHED, last: 100) {
+    category
+    folder {
+      url
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetFoldersQuery__
+ *
+ * To run a query within a React component, call `useGetFoldersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFoldersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFoldersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetFoldersQuery(baseOptions?: Apollo.QueryHookOptions<GetFoldersQuery, GetFoldersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetFoldersQuery, GetFoldersQueryVariables>(GetFoldersDocument, options);
+      }
+export function useGetFoldersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFoldersQuery, GetFoldersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetFoldersQuery, GetFoldersQueryVariables>(GetFoldersDocument, options);
+        }
+export type GetFoldersQueryHookResult = ReturnType<typeof useGetFoldersQuery>;
+export type GetFoldersLazyQueryHookResult = ReturnType<typeof useGetFoldersLazyQuery>;
+export type GetFoldersQueryResult = Apollo.QueryResult<GetFoldersQuery, GetFoldersQueryVariables>;
 export const GetProductBySlugDocument = gql`
     query GetProductBySlug($slug: String) {
   product(where: {slug: $slug}) {
@@ -9963,6 +9762,9 @@ export const GetProductBySlugDocument = gql`
     descriptionEn
     descriptionEs
     videoId
+    desc {
+      html
+    }
     sticker {
       url
     }
@@ -10120,6 +9922,9 @@ export const GetProductsDocument = gql`
     descriptionEn
     descriptionEs
     videoId
+    desc {
+      html
+    }
     sticker {
       url
     }
@@ -10162,6 +9967,46 @@ export function useGetProductsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetProductsQueryHookResult = ReturnType<typeof useGetProductsQuery>;
 export type GetProductsLazyQueryHookResult = ReturnType<typeof useGetProductsLazyQuery>;
 export type GetProductsQueryResult = Apollo.QueryResult<GetProductsQuery, GetProductsQueryVariables>;
+export const GetSparePartsByMachineDocument = gql`
+    query GetSparePartsByMachine($name: String) {
+  spareParts(where: {name: $name}, last: 200) {
+    name
+    reference
+    state
+    image {
+      url
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetSparePartsByMachineQuery__
+ *
+ * To run a query within a React component, call `useGetSparePartsByMachineQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSparePartsByMachineQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSparePartsByMachineQuery({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useGetSparePartsByMachineQuery(baseOptions?: Apollo.QueryHookOptions<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>(GetSparePartsByMachineDocument, options);
+      }
+export function useGetSparePartsByMachineLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>(GetSparePartsByMachineDocument, options);
+        }
+export type GetSparePartsByMachineQueryHookResult = ReturnType<typeof useGetSparePartsByMachineQuery>;
+export type GetSparePartsByMachineLazyQueryHookResult = ReturnType<typeof useGetSparePartsByMachineLazyQuery>;
+export type GetSparePartsByMachineQueryResult = Apollo.QueryResult<GetSparePartsByMachineQuery, GetSparePartsByMachineQueryVariables>;
 export const GetSparePartsDocument = gql`
     query GetSpareParts {
   spareParts(last: 200) {
