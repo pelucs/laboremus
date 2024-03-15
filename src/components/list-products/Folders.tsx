@@ -26,7 +26,6 @@ export default ({ category }: FoldersProps) => {
     checkFolder();
   }, [data, category]);
 
-
   return(
     <div>
       <a 
